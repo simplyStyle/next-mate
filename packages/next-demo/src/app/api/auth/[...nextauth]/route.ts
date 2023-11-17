@@ -1,1 +1,1 @@
-export { GET, POST } from '@/config/auth';
+export { GET, POST } from '@/common/auth/create-auth';

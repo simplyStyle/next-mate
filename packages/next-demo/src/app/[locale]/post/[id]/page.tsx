@@ -1,4 +1,4 @@
-import { HydrateClient } from '@/client/client-hydrate';
+import { HydrateClient } from '@hyperse-io/next-trpc';
 import { rsc } from '@/server/rsc';
 
 type PageProps = {

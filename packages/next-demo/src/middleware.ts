@@ -1,6 +1,6 @@
 import { type NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
-import { creteAuthMiddleware } from './config/create-auth-middleware';
+import { creteAuthMiddleware } from './common/auth/create-auth-middleware';
 import { locales, pathnames } from './navigation';
 
 const publicPages = [

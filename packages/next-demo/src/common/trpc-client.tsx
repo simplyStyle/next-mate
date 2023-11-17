@@ -1,10 +1,10 @@
 'use client';
 
+import { transformer } from '@hyperse-io/next-trpc';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink, loggerLink } from '@trpc/client';
 import { createTRPCReact } from '@trpc/react-query';
 import { useState } from 'react';
-import superjson from 'superjson';
 import type { AppRouter } from '@/server/routers/_app';
 
 export const trpc = createTRPCReact<AppRouter>({
@@ -44,7 +44,7 @@ export function ClientProvider(props: { children: React.ReactNode }) {
           url: `${getBaseUrl()}/api/trpc`,
         }),
       ],
-      transformer: superjson,
+      transformer,
     })
   );
   return (

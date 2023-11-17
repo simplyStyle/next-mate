@@ -68,6 +68,8 @@ jobs:
         working-directory: packages/next-demo
         run: |
           yarn lint
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
       - name: Unit tests
         working-directory: packages/next-demo
@@ -81,16 +83,7 @@ jobs:
         env:
           # Speed up build: they are linted in a previous step
           NEXTJS_IGNORE_ESLINT: true
-          # Speed up build: they are typechecked in a previous step
-          NEXTJS_IGNORE_TYPECHECK: true
-          # Speed up build: don't run if not needed, enable if it becomes needed
-          NEXT_DISABLE_SOURCEMAPS: true
-          # Don't send telemetry for ci
-          NEXT_TELEMETRY_DISABLED: true
-          # To allow checking size-limits
-          NEXTJS_DISABLE_SENTRY: false
-          # Fully disable sentry upload
-          NEXTJS_SENTRY_UPLOAD_DRY_RUN: true
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
       - name: Check browser bundle size limits
         working-directory: packages/next-demo

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import { trpc } from '@/client/client-trpc';
+import { trpc } from '@/common/trpc-client';
 import { type ISignUp, signUpSchema } from '@/common/validation/auth';
 
 export const Signup = () => {

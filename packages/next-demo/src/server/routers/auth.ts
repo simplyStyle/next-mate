@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import { hash } from 'argon2';
+import { signIn } from '@/common/auth/create-auth';
 import { loginSchema, signUpSchema } from '@/common/validation/auth';
-import { signIn } from '@/config/auth';
 import { publicProcedure, router } from '../trpc';
 
 export const authRouter = router({

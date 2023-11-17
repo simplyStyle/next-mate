@@ -2,7 +2,7 @@
  * This file makes sure that we can get a storage that is unique to the current request context
  */
 import type { AsyncLocalStorage } from 'async_hooks';
-import { requestAsyncStorage } from 'next/dist/client/components/request-async-storage.external';
+import { requestAsyncStorage } from 'next/dist/client/components/request-async-storage.external.js';
 
 // https://github.com/vercel/next.js/blob/canary/packages/next/client/components/request-async-storage.ts
 

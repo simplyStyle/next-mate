@@ -3,22 +3,12 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": "./src",
+    "jsx": "preserve",
     "noImplicitAny": false,
     "allowJs": false,
     "noEmit": false,
     "incremental": true,
-    "paths": {
-      "@/test-utils/*": ["./test-utils/*"],
-      "@armit/terminal": ["../../terminal/src/index.js"],
-      "@armit/logger": ["../../logger/src/index.js"],
-      "@armit/logger-node": ["../../logger-node/src/index.js"],
-      "@armit/commander": ["../../commander/src/index.js"],
-      "@armit/file-utility": ["../../file-utility/src/index.js"],
-      "@armit/package": ["../../package/src/index.js"],
-      "@armit/generate-template-files": [
-        "../../generate-template-files/src/index.js"
-      ]
-    },
+    "paths": {},
     "types": ["vitest/globals"]
   },
   "exclude": ["**/node_modules", "**/.*/", "dist", "build"]

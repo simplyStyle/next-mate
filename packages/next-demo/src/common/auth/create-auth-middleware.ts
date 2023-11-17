@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import NextAuth from 'next-auth';
-import { authBaseConfig } from './auth-base-config';
+import { authBaseConfig } from '../../config/auth-base-config';
 
 /**
  * 此处考虑到 authMiddleware会在全局middleware中使用，但是middleware 并不支持`argon2`库

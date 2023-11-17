@@ -59,7 +59,6 @@ export const postRouter = router({
         const nextItem = items.pop()!;
         nextCursor = nextItem.id;
       }
-
       return {
         items: items.reverse(),
         nextCursor,

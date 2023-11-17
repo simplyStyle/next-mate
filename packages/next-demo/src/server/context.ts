@@ -1,7 +1,7 @@
 import { type inferAsyncReturnType } from '@trpc/server';
 import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import { type Session } from 'next-auth';
-import { auth } from '../config/auth';
+import { auth } from '../common/auth/create-auth';
 import { prisma } from './prisma';
 
 interface CreateContextInnerOptions {

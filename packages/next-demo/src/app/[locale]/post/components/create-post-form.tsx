@@ -1,6 +1,6 @@
 'use client';
 
-import { trpc } from '@/client/client-trpc';
+import { trpc } from '@/common/trpc-client';
 import { type RouterInput } from '@/server/types';
 
 export function CreatePostForm() {

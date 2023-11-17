@@ -13,8 +13,7 @@ import type {
   ProcedureType,
 } from '@trpc/server';
 import { createRecursiveProxy } from '@trpc/server/shared';
-import { getRequestStorage } from './local-storage';
-import 'server-only';
+import { getRequestStorage } from './local-storage.js';
 
 interface CreateTRPCNextLayoutOptions<TRouter extends AnyRouter> {
   router: TRouter;

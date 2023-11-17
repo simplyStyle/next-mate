@@ -3,7 +3,7 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { loginSchema } from '@/common/validation/auth';
 import { prisma } from '@/server/prisma';
-import { authBaseConfig } from './auth-base-config';
+import { authBaseConfig } from '../../config/auth-base-config';
 
 export const {
   auth,

@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import { trpc } from '@/client/client-trpc';
+import { trpc } from '@/common/trpc-client';
 import {
   loginSchema,
   type ISignUp,

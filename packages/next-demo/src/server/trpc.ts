@@ -8,9 +8,9 @@
  * @see https://trpc.io/docs/v10/procedures
  */
 
+import { transformer } from '@hyperse-io/next-trpc';
 import { TRPCError, initTRPC } from '@trpc/server';
 import { ZodError } from 'zod';
-import { transformer } from '@/config/transformer';
 import { type Context } from './context';
 
 const t = initTRPC.context<Context>().create({

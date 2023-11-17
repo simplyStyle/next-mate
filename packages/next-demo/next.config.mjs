@@ -45,7 +45,7 @@ const config = {
   publicRuntimeConfig,
   /** We run eslint as a separate task in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
-  // transpilePackages: ['@acme/api', '@acme/db', '@trpc/next-layout'],
+  transpilePackages: ['@hyperse-io/next-trpc'],
 };
 
 export default getConfig(
