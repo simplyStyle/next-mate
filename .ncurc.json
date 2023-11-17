@@ -1,0 +1,8 @@
+{
+  "dep": "prod,dev,bundle,optional",
+  "reject": [
+    "@hyperse-io/demo",
+    "@hyperse-io/next-trpc",
+    "@tanstack/react-query"
+  ]
+}

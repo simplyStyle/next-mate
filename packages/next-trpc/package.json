@@ -1,0 +1,68 @@
+{
+  "name": "@hyperse-io/next-trpc",
+  "version": "1.0.0",
+  "homepage": "https://github.com/hyperse-io/next-trpc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperse-io/next-trpc",
+    "directory": "packages/next-trpc"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Yingchun Tian",
+    "url": "https://github.com/tianyingchun"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin/",
+    "dist/",
+    "index.js",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
+    "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
+    "dev": "tsup --watch",
+    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
+    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-trpc.eslintcache",
+    "test": "run-s test-unit",
+    "test-unit": "vitest run --passWithNoTests",
+    "test-coverage": "vitest run --coverage",
+    "test-unit-watch": "vitest watch --ui",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@armit/eslint-config-bases": "^0.0.29",
+    "@types/node": "20.9.1",
+    "@vitest/coverage-istanbul": "0.34.6",
+    "@vitest/ui": "0.34.6",
+    "eslint": "8.53.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.1.0",
+    "rimraf": "5.0.5",
+    "ts-node": "10.9.1",
+    "tsup": "7.3.0",
+    "typescript": "5.2.2",
+    "vite": "5.0.0",
+    "vite-tsconfig-paths": "4.2.1",
+    "vitest": "0.34.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "_release/package"
+  }
+}
