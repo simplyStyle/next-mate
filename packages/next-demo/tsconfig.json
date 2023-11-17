@@ -19,7 +19,8 @@
     "baseUrl": "./src",
     "types": ["vitest/globals"],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@hyperse-io/next-trpc": ["../../next-trpc/src/index.ts"]
     },
     "plugins": [
       {
