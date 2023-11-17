@@ -2833,7 +2833,7 @@ __metadata:
     "@commitlint/cli": "npm:18.4.2"
     "@commitlint/config-conventional": "npm:18.4.2"
     "@hookform/resolvers": "npm:3.3.2"
-    "@next/bundle-analyzer": "npm:14.0.2"
+    "@next/bundle-analyzer": "npm:14.0.3"
     "@playwright/test": "npm:^1.40.0"
     "@prisma/client": "npm:^5.6.0"
     "@tanstack/react-query": "npm:^4.x"
@@ -2860,7 +2860,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.33.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-tailwindcss: "npm:3.13.0"
-    next: "npm:^14.0.2"
+    next: "npm:^14.0.3"
     next-auth: "npm:beta"
     next-intl: "npm:^3.0.3"
     npm-run-all: "npm:^4.1.5"
@@ -2871,7 +2871,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-hook-form: "npm:7.48.2"
     server-only: "npm:0.0.1"
-    size-limit: "npm:9.0.0"
+    size-limit: "npm:11.0.0"
     start-server-and-test: "npm:^2.0.3"
     tailwind-merge: "npm:^2.0.0"
     tailwindcss: "npm:^3.3.5"
@@ -3053,12 +3053,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:14.0.2":
-  version: 14.0.2
-  resolution: "@next/bundle-analyzer@npm:14.0.2"
+"@next/bundle-analyzer@npm:14.0.3":
+  version: 14.0.3
+  resolution: "@next/bundle-analyzer@npm:14.0.3"
   dependencies:
     webpack-bundle-analyzer: "npm:4.7.0"
-  checksum: 540a093609b2009521578c0833ea51ab2143e9cf1570240893733445817b646770562b4a8f0dc103341cfc68fbd6f4fa3f1458f6d89845614d746484de72f040
+  checksum: 020442ba57704b46457f07b0f566c59ac0802f5337fd8db948430943b5cf4e5a96618389fcc8597a9d2faea9b35059f3af5f14c9f4ee992a877663595b4cd472
   languageName: node
   linkType: hard
 
@@ -3737,6 +3737,13 @@ __metadata:
   version: 5.6.0
   resolution: "@sindresorhus/is@npm:5.6.0"
   checksum: 66727344d0c92edde5760b5fd1f8092b717f2298a162a5f7f29e4953e001479927402d9d387e245fb9dc7d3b37c72e335e93ed5875edfc5203c53be8ecba1b52
+  languageName: node
+  linkType: hard
+
+"@sindresorhus/merge-streams@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@sindresorhus/merge-streams@npm:1.0.0"
+  checksum: 43d077170845dc621002e9730aea567e6e126e84b3bbff01b8575266efdb2c81d223939d3bec24020e53960c154b4640bef7746aeb245abd94c5d32972dd6854
   languageName: node
   linkType: hard
 
@@ -7488,7 +7495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1":
+"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1, fast-glob@npm:^3.3.2":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
   dependencies:
@@ -8263,6 +8270,20 @@ __metadata:
     merge2: "npm:^1.4.1"
     slash: "npm:^3.0.0"
   checksum: b39511b4afe4bd8a7aead3a27c4ade2b9968649abab0a6c28b1a90141b96ca68ca5db1302f7c7bd29eab66bf51e13916b8e0a3d0ac08f75e1e84a39b35691189
+  languageName: node
+  linkType: hard
+
+"globby@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "globby@npm:14.0.0"
+  dependencies:
+    "@sindresorhus/merge-streams": "npm:^1.0.0"
+    fast-glob: "npm:^3.3.2"
+    ignore: "npm:^5.2.4"
+    path-type: "npm:^5.0.0"
+    slash: "npm:^5.1.0"
+    unicorn-magic: "npm:^0.1.0"
+  checksum: 6d98738a419f948ef23da019275b15ca5c65bb7e354ecea52a3015f4dae6b28a713fcf73bf3aab1c04039f4f62da71cff191a7ececc37c0e4c9b4320a047505f
   languageName: node
   linkType: hard
 
@@ -10788,7 +10809,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"next@npm:^14.0.2, next@npm:^14.0.3":
+"next@npm:^14.0.3":
   version: 14.0.3
   resolution: "next@npm:14.0.3"
   dependencies:
@@ -11732,6 +11753,13 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: 666f6973f332f27581371efaf303fd6c272cc43c2057b37aa99e3643158c7e4b2626549555d88626e99ea9e046f82f32e41bbde5f1508547e9a11b149b52387c
+  languageName: node
+  linkType: hard
+
+"path-type@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "path-type@npm:5.0.0"
+  checksum: e8f4b15111bf483900c75609e5e74e3fcb79f2ddb73e41470028fcd3e4b5162ec65da9907be077ee5012c18801ff7fffb35f9f37a077f3f81d85a0b7d6578efd
   languageName: node
   linkType: hard
 
@@ -13224,19 +13252,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"size-limit@npm:9.0.0":
-  version: 9.0.0
-  resolution: "size-limit@npm:9.0.0"
+"size-limit@npm:11.0.0":
+  version: 11.0.0
+  resolution: "size-limit@npm:11.0.0"
   dependencies:
     bytes-iec: "npm:^3.1.1"
     chokidar: "npm:^3.5.3"
-    globby: "npm:^11.1.0"
+    globby: "npm:^14.0.0"
     lilconfig: "npm:^2.1.0"
     nanospinner: "npm:^1.1.0"
     picocolors: "npm:^1.0.0"
   bin:
     size-limit: bin.js
-  checksum: f5c09edd6413bd922853db031c2422818814c5453b890ed7cd0bf233d499035b40dae91a37526895a8e2f16da917ad199ee16c2ee939beba10b58864f9a8779d
+  checksum: 529ab5386dda4518631456d9b52b2f4ca1a35dd5f7ac71780abea63fe439d0e645413ade70607014de8c23152007a87ea9d0df31253e39cc8fcc304fb0d93b0a
   languageName: node
   linkType: hard
 
@@ -13251,6 +13279,13 @@ __metadata:
   version: 4.0.0
   resolution: "slash@npm:4.0.0"
   checksum: b522ca75d80d107fd30d29df0549a7b2537c83c4c4ecd12cd7d4ea6c8aaca2ab17ada002e7a1d78a9d736a0261509f26ea5b489082ee443a3a810586ef8eff18
+  languageName: node
+  linkType: hard
+
+"slash@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "slash@npm:5.1.0"
+  checksum: eb48b815caf0bdc390d0519d41b9e0556a14380f6799c72ba35caf03544d501d18befdeeef074bc9c052acf69654bc9e0d79d7f1de0866284137a40805299eb3
   languageName: node
   linkType: hard
 
@@ -14481,6 +14516,13 @@ __metadata:
   version: 2.1.0
   resolution: "unicode-property-aliases-ecmascript@npm:2.1.0"
   checksum: 50ded3f8c963c7785e48c510a3b7c6bc4e08a579551489aa0349680a35b1ceceec122e33b2b6c1b579d0be2250f34bb163ac35f5f8695fe10bbc67fb757f0af8
+  languageName: node
+  linkType: hard
+
+"unicorn-magic@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "unicorn-magic@npm:0.1.0"
+  checksum: e4ed0de05b0a05e735c7d8a2930881e5efcfc3ec897204d5d33e7e6247f4c31eac92e383a15d9a6bccb7319b4271ee4bea946e211bf14951fec6ff2cbbb66a92
   languageName: node
   linkType: hard
 
