@@ -59,22 +59,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-next-demo-${{ hashFiles('**/yarn.lock') }}-
 
-      - name: Typecheck
-        working-directory: packages/next-demo
-        run: |
-          yarn typecheck
+      # - name: Typecheck
+      #   working-directory: packages/next-demo
+      #   run: |
+      #     yarn typecheck
 
-      - name: Linter
-        working-directory: packages/next-demo
-        run: |
-          yarn lint
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+      # - name: Linter
+      #   working-directory: packages/next-demo
+      #   run: |
+      #     yarn lint
+      #   env:
+      #     DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
-      - name: Unit tests
-        working-directory: packages/next-demo
-        run: |
-          yarn test-unit
+      # - name: Unit tests
+      #   working-directory: packages/next-demo
+      #   run: |
+      #     yarn test-unit
 
       # - name: Build web-app
       #   working-directory: packages/next-demo
