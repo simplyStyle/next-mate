@@ -1,5 +1,11 @@
 # @hyperse-io/next-trpc
 
+## 1.0.3
+
+### Patch Changes
+
+- [`12e9ba0`](https://github.com/hyperse-io/next-mate/commit/12e9ba0507aba59c205bc0999be841f64c8aaa56) Thanks [@tianyingchun](https://github.com/tianyingchun)! - Add missed `typings` for next-auth
+
 ## 1.0.2
 
 ### Patch Changes
