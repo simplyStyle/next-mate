@@ -19,7 +19,9 @@
     "baseUrl": "./src",
     "types": ["vitest/globals"],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@hyperse-io/next-auth": ["../../next-auth/src/index.ts"],
+      "@hyperse-io/next-trpc": ["../../next-trpc/src/index.ts"]
     },
     "plugins": [
       {

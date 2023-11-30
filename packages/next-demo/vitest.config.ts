@@ -8,6 +8,7 @@ export default defineConfig({
     alias: [],
   },
   test: {
+    setupFiles: 'dotenv/config',
     globals: true,
     exclude: [...configDefaults.exclude, '**/playwright/**'],
     cache: {
