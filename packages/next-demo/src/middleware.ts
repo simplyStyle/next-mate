@@ -29,7 +29,6 @@ export default function middleware(req: NextRequest) {
     'i'
   );
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-  // eslint-disable-next-line sonarjs/no-all-duplicated-branches
   if (isPublicPage) {
     return intlMiddleware(req);
   } else {

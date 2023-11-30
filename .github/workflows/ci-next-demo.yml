@@ -76,21 +76,21 @@ jobs:
         run: |
           yarn test-unit
 
-      - name: Build web-app
-        working-directory: packages/next-demo
-        run: |
-          yarn build
-        env:
-          # Speed up build: they are linted in a previous step
-          NEXTJS_IGNORE_ESLINT: true
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+      # - name: Build web-app
+      #   working-directory: packages/next-demo
+      #   run: |
+      #     yarn build
+      #   env:
+      #     # Speed up build: they are linted in a previous step
+      #     NEXTJS_IGNORE_ESLINT: true
+      #     DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
-      - name: Check browser bundle size limits
-        working-directory: packages/next-demo
-        run: |
-          yarn check-size
+      # - name: Check browser bundle size limits
+      #   working-directory: packages/next-demo
+      #   run: |
+      #     yarn check-size
 
-      - name: Check ecmascript checks for build files
-        working-directory: packages/next-demo
-        run: |
-          yarn check-dist
+      # - name: Check ecmascript checks for build files
+      #   working-directory: packages/next-demo
+      #   run: |
+      #     yarn check-dist

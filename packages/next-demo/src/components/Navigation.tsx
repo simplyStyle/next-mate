@@ -1,9 +1,9 @@
 import { useTranslations } from 'next-intl';
 import { use } from 'react';
+import { rsc } from '@/server/rsc';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { LogoutButton } from './LogoutButton';
 import { NavigationLink } from './NavigationLink';
-import { rsc } from '@/server/rsc';
 
 export function Navigation() {
   const t = useTranslations('Navigation');

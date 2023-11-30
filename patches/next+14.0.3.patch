@@ -1,0 +1,13 @@
+diff --git a/node_modules/next/dist/server/lib/dev-bundler-service.d.ts b/node_modules/next/dist/server/lib/dev-bundler-service.d.ts
+index ffad992..ecedba8 100644
+--- a/node_modules/next/dist/server/lib/dev-bundler-service.d.ts
++++ b/node_modules/next/dist/server/lib/dev-bundler-service.d.ts
+@@ -7,7 +7,7 @@ import type { WorkerRequestHandler } from './types';
+  * bundler while in development.
+  */
+ export declare class DevBundlerService {
+-    private readonly bundler;
++    private readonly bundler:DevBundler;
+     private readonly handler;
+     constructor(bundler: DevBundler, handler: WorkerRequestHandler);
+     ensurePage: typeof this.bundler.hotReloader.ensurePage;
