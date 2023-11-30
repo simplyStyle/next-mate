@@ -2,13 +2,17 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { useTranslations } from 'next-intl';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { trpc } from '@/common/trpc-client';
+import { trpc } from '@/common/client-trpc';
 import { type ISignUp, signUpSchema } from '@/common/validation/auth';
 
 export const Signup = () => {
   const router = useRouter();
+  const [error, setError] = useState<string>();
+  const t = useTranslations('SignUp');
+
   const { register, handleSubmit } = useForm<ISignUp>({
     resolver: zodResolver(signUpSchema),
   });
@@ -17,12 +21,15 @@ export const Signup = () => {
 
   const onSubmit = useCallback(
     async (data: ISignUp) => {
+      if (error) setError(undefined);
       const result = await mutateAsync(data);
       if (result.status === 201) {
         router.push('/');
+      } else {
+        setError(result.message);
       }
     },
-    [mutateAsync, router]
+    [error, mutateAsync, router]
   );
 
   return (
@@ -51,6 +58,8 @@ export const Signup = () => {
             className="input input-bordered my-2 w-full max-w-xs p-1"
             {...register('password')}
           />
+          {error && <p className="text-red-700">{t('error', { error })}</p>}
+
           <div className="card-actions my-2 flex items-center justify-between">
             <Link href="/login" className="border-spacing-4 border-blue-700">
               Go to login

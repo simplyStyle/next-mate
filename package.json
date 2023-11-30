@@ -49,20 +49,23 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "resolutions": {
+    "dts-bundle-generator": "^9.0.0"
+  },
   "dependencies": {
     "cross-env": "7.0.3"
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "0.0.29",
-    "@changesets/changelog-github": "0.4.8",
-    "@changesets/cli": "2.26.2",
-    "@commitlint/cli": "18.4.2",
-    "@commitlint/config-conventional": "18.4.2",
+    "@changesets/changelog-github": "0.5.0",
+    "@changesets/cli": "2.27.1",
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
     "@types/prettier": "2.7.3",
-    "@types/shell-quote": "1.7.4",
+    "@types/shell-quote": "1.7.5",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.53.0",
+    "eslint": "8.54.0",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "lint-staged": "15.1.0",
@@ -70,7 +73,7 @@
     "prettier": "3.1.0",
     "rimraf": "5.0.5",
     "shell-quote": "1.8.1",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   },
   "engines": {
     "node": ">=18.0.0",

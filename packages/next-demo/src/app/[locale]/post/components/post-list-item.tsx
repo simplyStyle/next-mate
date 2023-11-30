@@ -15,6 +15,8 @@ export function PostListItem(props: { post: ListItem }) {
         <div className="flex items-center justify-between">
           <p className="truncate text-sm font-medium text-indigo-600">
             {post.title}
+            <br />
+            {post.text}
           </p>
         </div>
         <div className="mt-2 sm:flex sm:justify-between">

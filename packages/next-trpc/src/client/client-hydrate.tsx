@@ -1,8 +1,8 @@
 'use client';
 
-import superjson from 'superjson';
+import { transformer } from '../transformer.js';
 import { createHydrateClient } from './create-hydrate-client.jsx';
 
 export const HydrateClient = createHydrateClient({
-  transformer: superjson,
+  transformer,
 });

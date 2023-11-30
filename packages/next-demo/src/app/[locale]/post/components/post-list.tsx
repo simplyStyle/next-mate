@@ -2,7 +2,7 @@
 
 // import { dehydrate, useQueryClient } from '@tanstack/react-query';
 import { Fragment, useEffect, useRef } from 'react';
-import { trpc } from '@/common/trpc-client';
+import { trpc } from '@/common/client-trpc';
 import { useIsIntersecting } from '@/hooks/use-is-intersecting';
 import { PostListItem } from './post-list-item';
 

@@ -1,9 +1,7 @@
-import { logoutAction } from '@/app/actions/auth-action';
-
 export const LogoutButton = () => {
   return (
-    <form action={logoutAction}>
-      <button type="submit">Sign out</button>
+    <form action="/api/auth/logout">
+      <input type="submit" value="Sign out" className="cursor-pointer" />
     </form>
   );
 };

@@ -1,6 +1,5 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import withNextIntl from 'next-intl/plugin';
-import { env } from './src/config/env.cjs';
 
 const plugins = [];
 
@@ -24,15 +23,6 @@ function getConfig(config) {
 }
 
 /**
- * Dynamic configuration available for the browser and server.
- * Note: requires `ssr: true` or a `getInitialProps` in `_app.tsx`
- * @link https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration
- */
-export const publicRuntimeConfig = {
-  NODE_ENV: env.NODE_ENV,
-};
-
-/**
  * Don't be scared of the generics here.
  * All they do is to give us autocompletion when using this.
  * @type {import("next").NextConfig}
@@ -40,12 +30,16 @@ export const publicRuntimeConfig = {
 const config = {
   reactStrictMode: true,
   experimental: {
-    typedRoutes: true,
+    // typedRoutes: true,
+    // Turbo seemingly supports HMR for JSON files, quite handy to handle i18n messages.
+    serverActions: {
+      allowedForwardedHosts: ['www.hyperse.net', 'localhost'],
+      allowedOrigins: ['www.hyperse.net', 'localhost'],
+    },
   },
-  publicRuntimeConfig,
   /** We run eslint as a separate task in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
-  transpilePackages: ['@hyperse-io/next-trpc'],
+  transpilePackages: ['@hyperse-io/next-auth', '@hyperse-io/next-trpc'],
 };
 
 export default getConfig(

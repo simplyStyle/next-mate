@@ -1,12 +1,11 @@
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { use } from 'react';
-import { rsc } from '@/server/rsc';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { LogoutButton } from './LogoutButton';
 import { NavigationLink } from './NavigationLink';
+import { rsc } from '@/server/rsc';
 
 export function Navigation() {
-  const locale = useLocale();
   const t = useTranslations('Navigation');
   const user = use(rsc.whoami.fetch());
   return (
@@ -17,15 +16,16 @@ export function Navigation() {
           <NavigationLink href="/pathnames">{t('pathnames')}</NavigationLink>
           <NavigationLink href="/secret">Secret page</NavigationLink>
           {user ? (
-            <>
-              Hi <em>{user.email}</em>. {user.name}{' '}
-              <Link href="/api/auth/signout" className="underline">
-                Logout
-              </Link>
-            </>
+            <div className="inline-flex">
+              <div className="mx-2">
+                {' '}
+                Hi <em>{user.username}</em>
+              </div>{' '}
+              <LogoutButton />
+            </div>
           ) : (
             <>
-              <Link href={locale + '/login'}>Login</Link>
+              <NavigationLink href={'/login'}>Login</NavigationLink>
             </>
           )}
         </div>

@@ -5,18 +5,21 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import { trpc } from '@/common/trpc-client';
+import { trpc } from '@/common/client-trpc';
 import {
   loginSchema,
   type ISignUp,
   type ILogin,
 } from '@/common/validation/auth';
+import { GithubLoginButton } from '@/components/GithubLoginButton';
 import { LayoutPage } from '@/components/LayoutPage';
+import { NavigationLink } from '@/components/NavigationLink';
 
 export default function Login() {
   const t = useTranslations('Login');
   const [error, setError] = useState<string>();
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   const { register, handleSubmit } = useForm<ISignUp>({
     resolver: zodResolver(loginSchema),
@@ -26,15 +29,14 @@ export default function Login() {
   const onSubmit = useCallback(
     async (data: ILogin) => {
       if (error) setError(undefined);
-      const callbackUrl = searchParams.get('callbackUrl') || '/';
       const result = await mutateAsync(data);
-      if (result.status === 200) {
+      if (result!.status === 200) {
         window.location.href = callbackUrl;
       } else {
         setError(result.message);
       }
     },
-    [error, mutateAsync, searchParams]
+    [callbackUrl, error, mutateAsync]
   );
 
   return (
@@ -114,14 +116,15 @@ export default function Login() {
             </div>
             {error && <p className="text-red-700">{t('error', { error })}</p>}
           </form>
+          <div
+            className="mt-4 flex w-full items-center justify-center rounded px-7 py-2 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            style={{ backgroundColor: '#000000' }}
+          >
+            <GithubLoginButton callbackUrl={callbackUrl} />
+          </div>
           <p className="mt-10 text-center text-sm text-gray-400">
             Not a member?{' '}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300"
-            >
-              Start a 14 day free trial
-            </a>
+            <NavigationLink href={'/signup'}>Signup</NavigationLink>
           </p>
         </div>
       </div>

@@ -1,11 +1,16 @@
 'use client';
 
-import { trpc } from '@/common/trpc-client';
+import { trpc } from '@/common/client-trpc';
 import { type RouterInput } from '@/server/types';
 
 export function CreatePostForm() {
-  const addPost = trpc.post.add.useMutation({});
-
+  const utils = trpc.useUtils();
+  // https://trpc.io/docs/client/react/useUtils#invalidate-full-cache-on-every-mutation
+  const addPost = trpc.post.add.useMutation({
+    onSuccess() {
+      utils.post.list.invalidate();
+    },
+  });
   return (
     <form
       onSubmit={async (e) => {

@@ -1,6 +1,6 @@
+import { createAuthMiddleware } from '@hyperse-io/next-auth';
 import { type NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
-import { creteAuthMiddleware } from './common/auth/create-auth-middleware';
 import { locales, pathnames } from './navigation';
 
 const publicPages = [
@@ -21,7 +21,7 @@ const intlMiddleware = createIntlMiddleware({
 // Note that this callback is only invoked if
 // the `authorized` callback has returned `true`
 // and not for pages listed in `pages`.
-const authMiddleware = creteAuthMiddleware(intlMiddleware);
+const authMiddleware = createAuthMiddleware(intlMiddleware, {});
 
 export default function middleware(req: NextRequest) {
   const publicPathnameRegex = RegExp(
@@ -29,14 +29,16 @@ export default function middleware(req: NextRequest) {
     'i'
   );
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+  // eslint-disable-next-line sonarjs/no-all-duplicated-branches
   if (isPublicPage) {
     return intlMiddleware(req);
   } else {
-    return authMiddleware(req, {});
+    return authMiddleware(req);
   }
 }
 
 export const config = {
   // Skip all paths that should not be internationalized
   matcher: ['/((?!api|_next|.*\\..*).*)'],
+  runtime: 'nodejs',
 };

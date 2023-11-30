@@ -14,8 +14,7 @@ export const pathnames = {
   },
   '/secret': '/secret',
   '/login': '/login',
-  '/sign-up': '/sign-up',
-  '/api/auth/signout': '/api/auth/signout',
+  '/signup': '/signup',
 } satisfies Pathnames<typeof locales>;
 
 export const { Link, redirect, usePathname, useRouter } =

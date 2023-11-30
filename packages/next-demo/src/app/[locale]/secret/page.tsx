@@ -5,7 +5,7 @@ import { rsc } from '@/server/rsc';
 
 export default async function Page() {
   const t = await getTranslations('Secret');
-  const secret = await rsc.secret.fetch();
+  const user = await rsc.whoami.fetch();
 
   return (
     <LayoutPage title={t('title')}>
@@ -19,7 +19,7 @@ export default async function Page() {
             </p>
             <div className="my-4 rounded-lg bg-gray-700 p-4">
               <pre>
-                <code>{JSON.stringify(secret, null, 2)}</code>
+                <code>{JSON.stringify(user, null, 2)}</code>
               </pre>
             </div>
             <div className="text-center">

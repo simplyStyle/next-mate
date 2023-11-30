@@ -1,6 +1,6 @@
+import { LayoutPage } from 'components/LayoutPage';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { LayoutPage } from 'components/LayoutPage';
 
 type Props = {
   params: { locale: string };

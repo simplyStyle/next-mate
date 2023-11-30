@@ -22,7 +22,7 @@ export default function Error({
         <Link href="/login" className="link mx-2 text-blue-700">
           Go to login
         </Link>
-        <Link href="/sign-up" className="link text-green-700">
+        <Link href="/signup" className="link text-green-700">
           Go to register new user
         </Link>
         <button

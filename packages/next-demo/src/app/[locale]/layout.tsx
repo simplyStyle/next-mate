@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { type PropsWithChildren } from 'react';
-import { ClientProvider } from '@/common/trpc-client';
+import { ClientProvider } from '@/common/client-trpc';
 import { Navigation } from '@/components/Navigation';
 import { locales } from '@/navigation';
 

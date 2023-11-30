@@ -40,6 +40,9 @@
       }
     }
   },
+  "SignUp": {
+    "error": "{error, select, USER_ALREADY_EXISTS {User already exists} other {Unknown error}}"
+  },
   "Login": {
     "title": "Login",
     "email": "Email",
