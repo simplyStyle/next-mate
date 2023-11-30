@@ -50,9 +50,9 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@armit/eslint-config-bases": "^0.0.29",
-    "@flatjs/forge": "2.0.0",
-    "@types/node": "20.10.0",
+    "@armit/eslint-config-bases": "^0.1.0",
+    "@flatjs/forge": "2.0.1",
+    "@types/node": "20.10.1",
     "@vitest/coverage-istanbul": "0.34.6",
     "@vitest/ui": "0.34.6",
     "eslint": "8.54.0",
@@ -65,7 +65,7 @@
     "rollup-plugin-preserve-directives": "0.2.0",
     "ts-node": "10.9.1",
     "typescript": "5.3.2",
-    "vite": "5.0.0",
+    "vite": "5.0.4",
     "vite-tsconfig-paths": "4.2.1",
     "vitest": "0.34.6"
   },
