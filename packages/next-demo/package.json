@@ -29,7 +29,8 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx,.graphql --fix",
     "next-lint": "next lint",
-    "lint": "eslint --cache --ext \".js,.ts,.tsx\" --report-unused-disable-directives --report-unused-disable-directives src"
+    "lint": "eslint --cache --ext \".js,.ts,.tsx\" --report-unused-disable-directives --report-unused-disable-directives src",
+    "build:twl": "twl -p \"**/globals.css\""
   },
   "config": {
     "commitizen": {
@@ -66,6 +67,7 @@
     "@changesets/cli": "2.27.1",
     "@commitlint/cli": "18.4.3",
     "@commitlint/config-conventional": "18.4.3",
+    "@hyperse-io/tailwind-layer": "^1.0.2",
     "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.1",
     "@types/prettier": "2.7.3",
@@ -100,10 +102,6 @@
   "engines": {
     "node": ">=16.8"
   },
-  "publishConfig": {
-    "access": "restricted"
-  },
-  "packageManager": "yarn@1.22.19",
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   }

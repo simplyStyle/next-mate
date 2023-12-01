@@ -2819,6 +2819,7 @@ __metadata:
     "@hookform/resolvers": "npm:3.3.2"
     "@hyperse-io/next-auth": "workspace:*"
     "@hyperse-io/next-trpc": "workspace:*"
+    "@hyperse-io/tailwind-layer": "npm:^1.0.2"
     "@lucia-auth/adapter-prisma": "npm:^3.0.2"
     "@next/bundle-analyzer": "npm:14.0.3"
     "@playwright/test": "npm:^1.40.1"
@@ -2905,6 +2906,24 @@ __metadata:
     react: ^18.2.0
   languageName: unknown
   linkType: soft
+
+"@hyperse-io/tailwind-layer@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@hyperse-io/tailwind-layer@npm:1.0.2"
+  dependencies:
+    chokidar: "npm:^3.5.3"
+    glob: "npm:^10.3.10"
+    postcss-js: "npm:^4.0.1"
+    sade: "npm:^1.8.1"
+  peerDependencies:
+    postcss: ^8.4.21
+    prettier: ^3.1.0
+    tailwindcss: ^3.0.0
+  bin:
+    twl: bin/twl.mjs
+  checksum: 74ca8ff75609bb82c3af955f7b10b6039ce2561710f4f6b9fbebe512bed09a96ad80cc72c53b224af9bb914e8477ce779aada3c6db7c7c6339fb5149d9082ed0
+  languageName: node
+  linkType: hard
 
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
@@ -10577,6 +10596,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mri@npm:^1.1.0":
+  version: 1.2.0
+  resolution: "mri@npm:1.2.0"
+  checksum: a3d32379c2554cf7351db6237ddc18dc9e54e4214953f3da105b97dc3babe0deb3ffe99cf409b38ea47cc29f9430561ba6b53b24ab8f9ce97a4b50409e4a50e7
+  languageName: node
+  linkType: hard
+
 "mrmime@npm:^1.0.0":
   version: 1.0.1
   resolution: "mrmime@npm:1.0.1"
@@ -12786,6 +12812,15 @@ __metadata:
   dependencies:
     tslib: "npm:^2.1.0"
   checksum: 3c49c1ecd66170b175c9cacf5cef67f8914dcbc7cd0162855538d365c83fea631167cacb644b3ce533b2ea0e9a4d0b12175186985f89d75abe73dbd8f7f06f68
+  languageName: node
+  linkType: hard
+
+"sade@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "sade@npm:1.8.1"
+  dependencies:
+    mri: "npm:^1.1.0"
+  checksum: da8a3a5d667ad5ce3bf6d4f054bbb9f711103e5df21003c5a5c1a8a77ce12b640ed4017dd423b13c2307ea7e645adee7c2ae3afe8051b9db16a6f6d3da3f90b1
   languageName: node
   linkType: hard
 
