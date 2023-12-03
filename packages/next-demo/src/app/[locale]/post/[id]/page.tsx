@@ -1,4 +1,5 @@
 import { HydrateClient } from '@hyperse-io/next-trpc';
+import { notFound } from 'next/navigation';
 import { rsc } from '@/server/rsc';
 
 type PageProps = {
@@ -8,7 +9,9 @@ type PageProps = {
 
 export default async function Page(props: PageProps) {
   const post = await rsc.post.byId.fetch({ id: props.params.id });
-
+  if (!post) {
+    return notFound();
+  }
   return (
     <HydrateClient state={await rsc.dehydrate()}>
       <div className="p-4">

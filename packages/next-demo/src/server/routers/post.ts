@@ -3,7 +3,7 @@
  * This is an example router, you can delete this file and then update `../pages/api/trpc/[trpc].tsx`
  */
 import { Prisma } from '@prisma/client';
-import { TRPCError } from '@trpc/server';
+// import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 import { router, publicProcedure } from '../trpc';
 
@@ -78,10 +78,11 @@ export const postRouter = router({
         select: defaultPostSelect,
       });
       if (!post) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: `No post with id '${id}'`,
-        });
+        // throw new TRPCError({
+        //   code: 'NOT_FOUND',
+        //   message: `No post with id '${id}'`,
+        // });
+        return null;
       }
       return post;
     }),

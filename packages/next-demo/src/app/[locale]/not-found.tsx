@@ -1,13 +1,15 @@
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { LayoutPage } from '@/components/LayoutPage/LayoutPage';
 
-export default function NotFound() {
+// Note that `app/[locale]/[...rest]/page.tsx`
+// is necessary for this page to render.
+
+export default function NotFoundPage() {
   const t = useTranslations('NotFoundPage');
+
   return (
-    <div>
-      <h2>{t('title')}</h2>
-      <p>{t('description')}</p>
-      <Link href="/">Return Home</Link>
-    </div>
+    <LayoutPage title={t('title')}>
+      <p className="max-w-[460px]">{t('description')}</p>
+    </LayoutPage>
   );
 }
