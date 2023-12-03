@@ -93,8 +93,8 @@ jobs:
   #     - name: Publish github pages
   #       run: |
   #         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-  #         git config --global user.name 'tianyingchun'
-  #         git config --global user.email 'tianyingchun@outlook.com'
+  #         git config --global user.name 'hyperse-net'
+  #         git config --global user.email 'hyperse.net@gmail.com'
   #         git fetch
   #         git checkout gb_pages
   #         mkdir -p ./gb_pages

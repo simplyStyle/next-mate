@@ -13,8 +13,8 @@
     "url": "https://github.com/hyperse-io/next-trpc"
   },
   "author": {
-    "name": "Yingchun Tian",
-    "url": "https://github.com/tianyingchun"
+    "name": "hyperse net",
+    "url": "https://github.com/hyperse-net"
   },
   "type": "module",
   "workspaces": [
@@ -63,7 +63,7 @@
     "@types/shell-quote": "1.7.5",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.54.0",
+    "eslint": "8.55.0",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "lint-staged": "15.1.0",
