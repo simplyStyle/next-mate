@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { use } from 'react';
 import { rsc } from '@/server/rsc';
-import { LocaleSwitcher } from './LocaleSwitcher';
-import { LogoutButton } from './LogoutButton';
+import { LocaleSwitcher } from '../LocaleSwitcher/LocaleSwitcher';
+import { LogoutButton } from '../LogoutButton/LogoutButton';
 import { NavigationLink } from './NavigationLink';
 
 export function Navigation() {

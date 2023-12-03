@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { type PropsWithChildren } from 'react';
 import { ClientProvider } from '@/common/client-trpc';
-import { Navigation } from '@/components/Navigation';
+import { Navigation } from '@/components/Navigation/Navigation';
 import { locales } from '@/navigation';
 
 export default async function LocaleLayout({

@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { type ComponentProps } from 'react';
-import { Link, type pathnames } from '../navigation';
+import { Link, type pathnames } from '../../navigation';
 
 export function NavigationLink<Pathname extends keyof typeof pathnames>({
   href,

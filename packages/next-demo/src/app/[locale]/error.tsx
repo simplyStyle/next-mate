@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
-import { LayoutPage } from '@/components/LayoutPage';
+import { LayoutPage } from '@/components/LayoutPage/LayoutPage';
 
 type Props = {
   error: Error;

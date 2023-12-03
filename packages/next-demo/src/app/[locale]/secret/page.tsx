@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
-import { LayoutPage } from '@/components/LayoutPage';
-import { LogoutButton } from '@/components/LogoutButton';
+import { LayoutPage } from '@/components/LayoutPage/LayoutPage';
+import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 import { rsc } from '@/server/rsc';
 
 export default async function Page() {

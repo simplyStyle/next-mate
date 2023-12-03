@@ -11,9 +11,9 @@ import {
   type ISignUp,
   type ILogin,
 } from '@/common/validation/auth';
-import { GithubLoginButton } from '@/components/GithubLoginButton';
-import { LayoutPage } from '@/components/LayoutPage';
-import { NavigationLink } from '@/components/NavigationLink';
+import { LayoutPage } from '@/components/LayoutPage/LayoutPage';
+import { GithubLoginButton } from '@/components/LoginButton/GithubLoginButton';
+import { NavigationLink } from '@/components/Navigation/NavigationLink';
 
 export default function Login() {
   const t = useTranslations('Login');

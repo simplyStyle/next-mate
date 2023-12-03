@@ -3,7 +3,11 @@ import { headers, cookies } from 'next/headers.js';
 import { NextResponse, type NextRequest } from 'next/server.js';
 import { authEnv } from '../auth-env.js';
 
-export const logoutHandler = async (auth: Auth, request: NextRequest) => {
+export const logoutHandler = async (
+  auth: Auth,
+  request: NextRequest,
+  handler?: (request: NextRequest) => Promise<void>
+) => {
   const authRequest = auth.handleRequest(request.method, {
     headers,
     cookies,
@@ -15,6 +19,10 @@ export const logoutHandler = async (auth: Auth, request: NextRequest) => {
       status: 401,
     });
   }
+
+  // customized logout handle?
+  await handler?.(request);
+
   // make sure to invalidate the current session!
   await auth.invalidateSession(session.sessionId);
   // delete session cookie

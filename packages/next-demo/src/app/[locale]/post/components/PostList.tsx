@@ -3,8 +3,8 @@
 // import { dehydrate, useQueryClient } from '@tanstack/react-query';
 import { Fragment, useEffect, useRef } from 'react';
 import { trpc } from '@/common/client-trpc';
-import { useIsIntersecting } from '@/hooks/use-is-intersecting';
-import { PostListItem } from './post-list-item';
+import { useIsIntersecting } from '@/hooks/useIsIntersecting';
+import { PostListItem } from './PostListItem';
 
 // function useRenderCount() {
 //   const ref = useRef(0);
