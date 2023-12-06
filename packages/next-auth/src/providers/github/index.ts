@@ -2,8 +2,7 @@ import { github } from '@lucia-auth/oauth/providers';
 import { type Auth } from 'lucia';
 import { authEnv } from '../../auth-env.js';
 import { ensureSlash } from '../../utils/auth-utils.js';
-
-export { authorizeCallbackHandler, authorizeHandler } from './handlers.js';
+import { authorizeCallbackHandler, authorizeHandler } from './handlers.js';
 
 export type GithubConfig = {
   clientId: string;
@@ -12,7 +11,7 @@ export type GithubConfig = {
   redirectUri?: string;
 };
 
-export const createGithub = (auth: Auth, config: GithubConfig) => {
+export const createGithubProvider = (auth: Auth, config: GithubConfig) => {
   return github(auth, {
     redirectUri: `${ensureSlash(
       authEnv?.LUCIA_AUTH_URL || ''
@@ -20,4 +19,9 @@ export const createGithub = (auth: Auth, config: GithubConfig) => {
     scope: ['user:email'],
     ...config,
   });
+};
+
+export const githubProviderHandlers = {
+  authorizeCallbackHandler,
+  authorizeHandler,
 };

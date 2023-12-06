@@ -1,4 +1,4 @@
-import { authorizeCallbackHandler } from '@hyperse-io/next-auth';
+import { githubProviderHandlers } from '@hyperse-io/next-auth';
 import type { NextRequest } from 'next/server';
 import { auth, githubAuth } from '@/auth/lucia';
 
@@ -8,5 +8,9 @@ import { auth, githubAuth } from '@/auth/lucia';
  * @returns
  */
 export const GET = async (request: NextRequest) => {
-  return authorizeCallbackHandler(auth, githubAuth, request);
+  return githubProviderHandlers.authorizeCallbackHandler(
+    auth,
+    githubAuth,
+    request
+  );
 };

@@ -1,4 +1,4 @@
-import { createGithub } from '@hyperse-io/next-auth';
+import { createGithubProvider } from '@hyperse-io/next-auth';
 import { prisma } from '@lucia-auth/adapter-prisma';
 import { lucia } from 'lucia';
 import { nextjs_future } from 'lucia/middleware';
@@ -26,7 +26,7 @@ export const auth = lucia({
 
 export type Auth = typeof auth;
 
-export const githubAuth = createGithub(auth, {
+export const githubAuth = createGithubProvider(auth, {
   clientId: env.GITHUB_CLIENT_ID,
   clientSecret: env.GITHUB_CLIENT_SECRET,
 });
