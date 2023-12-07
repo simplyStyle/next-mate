@@ -2,6 +2,7 @@ import './globals.css';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { PublicEnvScript } from 'next-runtime-env';
 import { type PropsWithChildren } from 'react';
 import { ClientProvider } from '@/common/client-trpc';
 import { Navigation } from '@/components/Navigation/Navigation';
@@ -23,6 +24,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <PublicEnvScript />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body>

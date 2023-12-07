@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { env } from 'next-runtime-env';
 import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { trpc } from '@/common/client-trpc';
@@ -50,6 +51,7 @@ export default function Login() {
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
             Sign in to your account
+            <p>env:{env('NEXT_PUBLIC_LUCIA_AUTH_URL')}</p>
           </h2>
         </div>
 

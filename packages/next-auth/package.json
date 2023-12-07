@@ -52,9 +52,9 @@
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.0",
     "@flatjs/forge": "2.0.1",
-    "@types/node": "20.10.3",
-    "@vitest/coverage-istanbul": "1.0.1",
-    "@vitest/ui": "1.0.1",
+    "@types/node": "20.10.4",
+    "@vitest/coverage-istanbul": "1.0.2",
+    "@vitest/ui": "1.0.2",
     "eslint": "8.55.0",
     "lucia": "^2.7.4",
     "next": "^14.0.3",
@@ -64,10 +64,10 @@
     "rimraf": "5.0.5",
     "rollup-plugin-preserve-directives": "0.2.0",
     "ts-node": "10.9.1",
-    "typescript": "5.3.2",
-    "vite": "5.0.5",
+    "typescript": "5.3.3",
+    "vite": "5.0.6",
     "vite-tsconfig-paths": "4.2.1",
-    "vitest": "1.0.1"
+    "vitest": "1.0.2"
   },
   "peerDependencies": {
     "lucia": "^2.7.4",

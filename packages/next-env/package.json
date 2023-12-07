@@ -1,11 +1,11 @@
 {
-  "name": "@hyperse-io/next-trpc",
-  "version": "1.0.3",
-  "homepage": "https://github.com/hyperse-io/next-trpc",
+  "name": "@hyperse-io/next-env",
+  "version": "1.0.0",
+  "homepage": "https://github.com/hyperse-io/next-env",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperse-io/next-trpc",
-    "directory": "packages/next-trpc"
+    "url": "https://github.com/hyperse-io/next-env",
+    "directory": "packages/next-env"
   },
   "license": "MIT",
   "author": {
@@ -17,14 +17,6 @@
     ".": {
       "import": "./index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./client": {
-      "import": "./client/index.js",
-      "types": "./dist/client/index.d.ts"
-    },
-    "./trpc": {
-      "import": "./trpc/index.js",
-      "types": "./dist/trpc/index.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -42,7 +34,7 @@
     "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
     "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
     "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
-    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-trpc.eslintcache",
+    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-env.eslintcache",
     "test": "run-s test-unit",
     "test-unit": "vitest run --passWithNoTests",
     "test-coverage": "vitest run --coverage",
@@ -50,14 +42,11 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "dependencies": {
-    "superjson": "^2.2.1"
+    "picocolors": "^1.0.0"
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.0",
     "@flatjs/forge": "2.0.1",
-    "@tanstack/query-core": "^4.x",
-    "@tanstack/react-query": "^4.x",
-    "@trpc/server": "^10.44.1",
     "@types/node": "20.10.4",
     "@vitest/coverage-istanbul": "1.0.2",
     "@vitest/ui": "1.0.2",
@@ -65,21 +54,17 @@
     "next": "^14.0.3",
     "npm-run-all": "4.1.5",
     "prettier": "3.1.0",
-    "react": "^18.2.0",
     "rimraf": "5.0.5",
-    "rollup-plugin-preserve-directives": "0.2.0",
     "ts-node": "10.9.1",
     "typescript": "5.3.3",
     "vite": "5.0.6",
     "vite-tsconfig-paths": "4.2.1",
-    "vitest": "1.0.2"
+    "vitest": "1.0.2",
+    "zod": "^3.22.4"
   },
   "peerDependencies": {
-    "@tanstack/query-core": "^4.x",
-    "@tanstack/react-query": "^4.x",
-    "@trpc/server": "^10.43.3",
     "next": "^14.0.3",
-    "react": "^18.2.0"
+    "zod": "^3.22.4"
   },
   "engines": {
     "node": ">=18.0.0"
