@@ -1,5 +1,15 @@
 # @hyperse-io/next-auth
 
+## 1.0.3
+
+### Patch Changes
+
+- [`f82939a`](https://github.com/hyperse-io/next-mate/commit/f82939a919ebe6c4c317fbd431497600cbbc58fd) Thanks [@hyperse-net](https://github.com/hyperse-net)! - Add next-env, bump version
+
+- [`83dd287`](https://github.com/hyperse-io/next-mate/commit/83dd2872b1bf8cb54990f208e2005bc571b03889) Thanks [@tianyingchun](https://github.com/tianyingchun)! - refactor auth, allow custom handler hooks before logout
+
+- [`c3df55a`](https://github.com/hyperse-io/next-mate/commit/c3df55a20084974ae90e5d635b654bfaa6d3d6e2) Thanks [@hyperse-net](https://github.com/hyperse-net)! - small refactor & bump version
+
 ## 1.0.2
 
 ### Patch Changes
