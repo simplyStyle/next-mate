@@ -1,5 +1,13 @@
 # @hyperse-io/next-trpc
 
+## 1.0.4
+
+### Patch Changes
+
+- [`f82939a`](https://github.com/hyperse-io/next-mate/commit/f82939a919ebe6c4c317fbd431497600cbbc58fd) Thanks [@hyperse-net](https://github.com/hyperse-net)! - Add next-env, bump version
+
+- [`c3df55a`](https://github.com/hyperse-io/next-mate/commit/c3df55a20084974ae90e5d635b654bfaa6d3d6e2) Thanks [@hyperse-net](https://github.com/hyperse-net)! - small refactor & bump version
+
 ## 1.0.3
 
 ### Patch Changes
