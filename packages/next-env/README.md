@@ -1,5 +1,3 @@
-# @hyperse-io/next-trpc
+# @hyperse-io/next-env
 
-Infrastructure setup for `trpc` + `next.js` with app router
-
-## refer demo at https://github.com/hyperse-io/next-mate/tree/main/packages/next-demo
+The config helpers for next.config.js
