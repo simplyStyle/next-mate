@@ -1,5 +1,16 @@
 # @hyperse-io/next-demo
 
+## 1.0.4
+
+### Patch Changes
+
+- [`5c45e85`](https://github.com/hyperse-io/next-mate/commit/5c45e851be0cc1cfa13f152f45b52add7d73606e) Thanks [@hyperse-net](https://github.com/hyperse-net)! - refactor & bump veresion
+
+- Updated dependencies [[`5c45e85`](https://github.com/hyperse-io/next-mate/commit/5c45e851be0cc1cfa13f152f45b52add7d73606e)]:
+  - @hyperse-io/next-auth@1.0.4
+  - @hyperse-io/next-core@1.0.5
+  - @hyperse-io/next-env@1.0.2
+
 ## 1.0.3
 
 ### Patch Changes
