@@ -1,16 +1,18 @@
 {
-  "name": "next-trpc-monorepo",
+  "name": "next-mate-monorepo",
   "version": "0.0.1",
   "private": true,
   "description": "The tRPC framework based on next.js app router with i18n",
   "keywords": [
     "next.js",
-    "trpc"
+    "next mate",
+    "trpc",
+    "hyperse.net"
   ],
-  "homepage": "https://github.com/hyperse-io/next-trpc",
+  "homepage": "https://github.com/hyperse-io/next-mate",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperse-io/next-trpc"
+    "url": "https://github.com/hyperse-io/next-mate"
   },
   "author": {
     "name": "hyperse net",

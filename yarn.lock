@@ -10869,22 +10869,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-runtime-env@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "next-runtime-env@npm:3.2.0"
-  dependencies:
-    next: "npm:^14"
-    react: "npm:^18"
-  peerDependencies:
-    next: ^14
-    react: ^18
-  checksum: 22ca7f0e65d7977e3f6893455f2af256c7f097715f0828124f063af9146ae4c084b7b67e304ae904fca676e19a27798b2926159f2067f025c078738a00c47640
-  languageName: node
-  linkType: hard
-
-"next-trpc-monorepo@workspace:.":
+"next-mate-monorepo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "next-trpc-monorepo@workspace:."
+  resolution: "next-mate-monorepo@workspace:."
   dependencies:
     "@armit/eslint-config-bases": "npm:0.1.0"
     "@changesets/changelog-github": "npm:0.5.0"
@@ -10908,6 +10895,19 @@ __metadata:
     typescript: "npm:5.3.3"
   languageName: unknown
   linkType: soft
+
+"next-runtime-env@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "next-runtime-env@npm:3.2.0"
+  dependencies:
+    next: "npm:^14"
+    react: "npm:^18"
+  peerDependencies:
+    next: ^14
+    react: ^18
+  checksum: 22ca7f0e65d7977e3f6893455f2af256c7f097715f0828124f063af9146ae4c084b7b67e304ae904fca676e19a27798b2926159f2067f025c078738a00c47640
+  languageName: node
+  linkType: hard
 
 "next@npm:^14, next@npm:^14.0.4":
   version: 14.0.4
