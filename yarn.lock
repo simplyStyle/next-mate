@@ -2804,7 +2804,7 @@ __metadata:
     zod: "npm:^3.22.4"
   peerDependencies:
     lucia: ^2.7.4
-    next: ^14.0.3
+    next: ^14.0.4
   languageName: unknown
   linkType: soft
 
@@ -2837,7 +2837,7 @@ __metadata:
     "@tanstack/query-core": ^4.x
     "@tanstack/react-query": ^4.x
     "@trpc/server": ^10.43.3
-    next: ^14.0.3
+    next: ^14.0.4
     react: ^18.2.0
   languageName: unknown
   linkType: soft
@@ -2932,7 +2932,7 @@ __metadata:
     vitest: "npm:1.0.2"
     zod: "npm:^3.22.4"
   peerDependencies:
-    next: ^14.0.3
+    next: ^14.0.4
     zod: ^3.22.4
   languageName: unknown
   linkType: soft
