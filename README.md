@@ -1,6 +1,6 @@
-# next-trpc
+# next-mate
 
-The tRPC framework based on next.js app router with i18n
+The tRPC framework based on next.js `app router` with `i18n`
 
 ## patch-package
 

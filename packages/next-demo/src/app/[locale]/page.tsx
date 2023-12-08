@@ -1,4 +1,4 @@
-import { HydrateClient } from '@hyperse-io/next-trpc';
+import { HydrateClient } from '@hyperse-io/next-core';
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { Suspense, use } from 'react';

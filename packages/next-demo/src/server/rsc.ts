@@ -1,5 +1,5 @@
 import 'server-only';
-import { transformer, createTRPCNextLayout } from '@hyperse-io/next-trpc';
+import { transformer, createTRPCNextLayout } from '@hyperse-io/next-core';
 import { createContext } from '@/server/context';
 import { appRouter } from '@/server/routers/_app';
 

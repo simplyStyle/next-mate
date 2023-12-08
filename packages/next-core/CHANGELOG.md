@@ -1,4 +1,4 @@
-# @hyperse-io/next-trpc
+# @hyperse-io/next-core
 
 ## 1.0.4
 

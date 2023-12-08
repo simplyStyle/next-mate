@@ -10,7 +10,7 @@ export default defineConfig({
     environment: 'node',
     passWithNoTests: false,
     cache: {
-      dir: '../../.cache/vitest/next-trpc',
+      dir: '../../.cache/vitest/next-core',
     },
     coverage: {
       provider: 'istanbul',

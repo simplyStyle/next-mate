@@ -51,7 +51,7 @@ const config = {
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   transpilePackages: [
     '@hyperse-io/next-auth',
-    '@hyperse-io/next-trpc',
+    '@hyperse-io/next-core',
     '@hyperse-io/next-env',
   ],
 };

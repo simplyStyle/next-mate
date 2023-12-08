@@ -1,4 +1,4 @@
-# @hyperse-io/next-trpc
+# @hyperse-io/next-core
 
 Infrastructure setup for `trpc` + `next.js` with app router
 

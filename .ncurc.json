@@ -1,8 +1,8 @@
 {
-  "dep": "prod,dev,bundle,optional",
+  "dep": "prod,dev,bundle,optional,peer",
   "reject": [
     "@hyperse-io/next-demo",
-    "@hyperse-io/next-trpc",
+    "@hyperse-io/next-core",
     "@hyperse-io/next-auth",
     "@tanstack/react-query",
     "@tanstack/query-core"

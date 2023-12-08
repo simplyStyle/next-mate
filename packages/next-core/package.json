@@ -1,11 +1,11 @@
 {
-  "name": "@hyperse-io/next-trpc",
+  "name": "@hyperse-io/next-core",
   "version": "1.0.4",
-  "homepage": "https://github.com/hyperse-io/next-trpc",
+  "homepage": "https://github.com/hyperse-io/next-core",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperse-io/next-trpc",
-    "directory": "packages/next-trpc"
+    "url": "https://github.com/hyperse-io/next-core",
+    "directory": "packages/next-core"
   },
   "license": "MIT",
   "author": {
@@ -42,7 +42,7 @@
     "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
     "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
     "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
-    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-trpc.eslintcache",
+    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-core.eslintcache",
     "test": "run-s test-unit",
     "test-unit": "vitest run --passWithNoTests",
     "test-coverage": "vitest run --coverage",
@@ -62,7 +62,7 @@
     "@vitest/coverage-istanbul": "1.0.2",
     "@vitest/ui": "1.0.2",
     "eslint": "8.55.0",
-    "next": "^14.0.3",
+    "next": "^14.0.4",
     "npm-run-all": "4.1.5",
     "prettier": "3.1.0",
     "react": "^18.2.0",
@@ -71,14 +71,14 @@
     "ts-node": "10.9.1",
     "typescript": "5.3.3",
     "vite": "5.0.6",
-    "vite-tsconfig-paths": "4.2.1",
+    "vite-tsconfig-paths": "4.2.2",
     "vitest": "1.0.2"
   },
   "peerDependencies": {
     "@tanstack/query-core": "^4.x",
     "@tanstack/react-query": "^4.x",
     "@trpc/server": "^10.43.3",
-    "next": "^14.0.3",
+    "next": "^14.0.4",
     "react": "^18.2.0"
   },
   "engines": {

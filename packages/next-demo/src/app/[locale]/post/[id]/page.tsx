@@ -1,4 +1,4 @@
-import { HydrateClient } from '@hyperse-io/next-trpc';
+import { HydrateClient } from '@hyperse-io/next-core';
 import { notFound } from 'next/navigation';
 import { rsc } from '@/server/rsc';
 

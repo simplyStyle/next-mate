@@ -7,7 +7,7 @@
  * @see https://trpc.io/docs/v10/router
  * @see https://trpc.io/docs/v10/procedures
  */
-import { transformer } from '@hyperse-io/next-trpc';
+import { transformer } from '@hyperse-io/next-core';
 import { TRPCError, initTRPC } from '@trpc/server';
 import { ZodError } from 'zod';
 import { type Context } from './context';
