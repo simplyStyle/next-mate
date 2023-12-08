@@ -1,0 +1,78 @@
+{
+  "name": "@hyperse-io/next-graphql",
+  "version": "1.0.0",
+  "homepage": "https://github.com/hyperse-io/next-graphql",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperse-io/next-graphql",
+    "directory": "packages/next-graphql"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Hyperse",
+    "url": "https://github.com/hyperse-io"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin/",
+    "dist/",
+    "index.js",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "flatjs-forge build -d -c",
+    "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
+    "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
+    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
+    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-graphql.eslintcache",
+    "test": "run-s test-unit",
+    "test-unit": "vitest run --passWithNoTests",
+    "test-coverage": "vitest run --coverage",
+    "test-unit-watch": "vitest watch --ui",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "is-plain-obj": "^4.1.0"
+  },
+  "devDependencies": {
+    "@armit/eslint-config-bases": "^0.1.0",
+    "@flatjs/forge": "2.0.1",
+    "@types/node": "20.10.4",
+    "@vitest/coverage-istanbul": "1.0.2",
+    "@vitest/ui": "1.0.2",
+    "eslint": "8.55.0",
+    "fastify": "^4.24.3",
+    "graphql": "16.8.1",
+    "mercurius": "13.3.1",
+    "next": "^14.0.4",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.1.0",
+    "rimraf": "5.0.5",
+    "ts-node": "10.9.1",
+    "typescript": "5.3.3",
+    "vite": "5.0.6",
+    "vite-tsconfig-paths": "4.2.2",
+    "vitest": "1.0.2"
+  },
+  "peerDependencies": {
+    "next": "^14.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "_release/package"
+  }
+}

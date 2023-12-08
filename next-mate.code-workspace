@@ -17,6 +17,10 @@
       "path": "packages/next-core"
     },
     {
+      "name": "next-graphql",
+      "path": "packages/next-graphql"
+    },
+    {
       "name": "root",
       "path": "."
     }
@@ -46,7 +50,8 @@
       "./packages/next-demo",
       "./packages/next-env",
       "./packages/next-auth",
-      "./packages/next-core"
+      "./packages/next-core",
+      "./packages/next-graphql"
     ],
     "typescript.tsdk": "root/node_modules/typescript/lib"
   }
