@@ -1,4 +1,4 @@
-name: CI-next-trpc
+name: CI-next-core
 
 on:
   push:
@@ -54,22 +54,22 @@ jobs:
         uses: ./.github/actions/yarn-nm-install
 
       - name: Typecheck
-        working-directory: packages/next-trpc
+        working-directory: packages/next-core
         run: |
           yarn typecheck
 
       - name: Linter
-        working-directory: packages/next-trpc
+        working-directory: packages/next-core
         run: |
           yarn lint
 
       - name: Unit tests
-        working-directory: packages/next-trpc
+        working-directory: packages/next-core
         run: |
           yarn test-unit --passWithNoTests
 
-      - name: Build next-trpc
-        working-directory: packages/next-trpc
+      - name: Build next-core
+        working-directory: packages/next-core
         run: |
           yarn build
   # commit:
@@ -86,7 +86,7 @@ jobs:
   #       uses: ./.github/actions/yarn-nm-install
 
   #     - name: Unit test coverage
-  #       working-directory: packages/next-trpc
+  #       working-directory: packages/next-core
   #       run: |
   #         yarn test-coverage
 
@@ -98,7 +98,7 @@ jobs:
   #         git fetch
   #         git checkout gb_pages
   #         mkdir -p ./gb_pages
-  #         cp -R ./packages/next-trpc/coverage/* ./gb_pages/coverage/next-trpc
+  #         cp -R ./packages/next-core/coverage/* ./gb_pages/coverage/next-core
   #         git add gb_pages/*
   #         git commit -m "Update page"
   #         git push
