@@ -1,6 +1,6 @@
 # next-mate
 
-The tRPC framework based on next.js `app router` with `i18n`
+The `next.js` based dev toolkits to help you setup fullstack infrastructure quickly
 
 ## patch-package
 

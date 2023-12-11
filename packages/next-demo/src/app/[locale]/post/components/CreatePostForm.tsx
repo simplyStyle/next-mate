@@ -11,6 +11,7 @@ export function CreatePostForm() {
       utils.post.list.invalidate();
     },
   });
+
   return (
     <form
       onSubmit={async (e) => {
