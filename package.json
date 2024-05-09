@@ -52,6 +52,11 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "resolutions": {
+    "@flatjs/forge": "2.0.0",
+    "@prisma/client": "5.7.0",
+    "@lucia-auth/adapter-prisma": "^3.0.2"
+  },
   "dependencies": {
     "cross-env": "7.0.3"
   },
