@@ -1,4 +1,4 @@
-import { type NextConfig } from 'next/types/index.js';
+import { type NextConfig } from 'next';
 import { type z, type ZodSchema } from 'zod';
 import { printValidatedEnv } from './print-validated-env.js';
 

@@ -1,5 +1,4 @@
 import { getSession } from '@hyperse-io/next-auth';
-import { type inferAsyncReturnType } from '@trpc/server';
 import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import { type Session } from 'lucia';
 import { auth } from '@/auth/lucia';
@@ -27,7 +26,7 @@ export async function createContextInner(opts: CreateContextInnerOptions) {
 export async function createContext(
   opts: Partial<FetchCreateContextFnOptions>
 ): Promise<
-  inferAsyncReturnType<typeof createContextInner> &
+  Awaited<ReturnType<typeof createContextInner>> &
     Partial<FetchCreateContextFnOptions>
 > {
   // RSC: for API-response caching see https://trpc.io/docs/caching
@@ -41,4 +40,4 @@ export async function createContext(
   };
 }
 
-export type Context = inferAsyncReturnType<typeof createContext>;
+export type Context = Awaited<ReturnType<typeof createContext>>;

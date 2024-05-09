@@ -27,6 +27,7 @@
     "g:build": "yarn g:build-release",
     "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
     "g:build-release": "yarn workspaces foreach --all -tv run build-release",
+    "g:build-local": "yarn workspaces foreach --all -tv run build",
     "g:test-unit": "yarn workspaces foreach --all -ptv run test-unit",
     "g:test-e2e": "yarn workspaces foreach --all -tv run test-e2e",
     "g:test-coverage": "yarn workspaces foreach --all -tv run test-coverage",

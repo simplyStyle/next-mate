@@ -42,9 +42,9 @@ export function ClientProvider(props: { children: React.ReactNode }) {
         }),
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
+          transformer,
         }),
       ],
-      transformer,
     })
   );
   return (
