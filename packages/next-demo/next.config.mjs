@@ -49,11 +49,11 @@ const config = {
   },
   /** We run eslint as a separate task in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
-  transpilePackages: [
-    '@hyperse-io/next-auth',
-    '@hyperse-io/next-core',
-    '@hyperse-io/next-env',
-  ],
+  // transpilePackages: [
+  //   '@hyperse-io/next-auth',
+  //   '@hyperse-io/next-core',
+  //   '@hyperse-io/next-env',
+  // ],
 };
 
 export default getNextConfig(

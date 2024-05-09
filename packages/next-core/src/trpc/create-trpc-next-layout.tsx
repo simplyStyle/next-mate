@@ -1,21 +1,24 @@
 import { dehydrate, QueryClient } from '@tanstack/query-core';
 import type { DehydratedState } from '@tanstack/react-query';
 import type {
-  AnyProcedure,
-  AnyQueryProcedure,
-  AnyRouter,
-  DataTransformer,
+  AnyTRPCProcedure,
+  AnyTRPCQueryProcedure,
+  AnyTRPCRouter,
   inferProcedureInput,
   inferProcedureOutput,
   inferRouterContext,
-  MaybePromise,
-  ProcedureRouterRecord,
-  ProcedureType,
+  TRPCProcedureType,
 } from '@trpc/server';
-import { createRecursiveProxy } from '@trpc/server/shared';
+import {
+  createRecursiveProxy,
+  type DataTransformer,
+  type MaybePromise,
+  type CreateRouterOptions,
+  type GetRawInputFn,
+} from '@trpc/server/unstable-core-do-not-import';
 import { getRequestStorage } from './local-storage.js';
 
-interface CreateTRPCNextLayoutOptions<TRouter extends AnyRouter> {
+interface CreateTRPCNextLayoutOptions<TRouter extends AnyTRPCRouter> {
   router: TRouter;
   createContext: () => MaybePromise<inferRouterContext<TRouter>>;
   transformer?: DataTransformer;
@@ -24,8 +27,8 @@ interface CreateTRPCNextLayoutOptions<TRouter extends AnyRouter> {
 /**
  * @internal
  */
-export type DecorateProcedure<TProcedure extends AnyProcedure> =
-  TProcedure extends AnyQueryProcedure
+export type DecorateProcedure<TProcedure extends AnyTRPCProcedure> =
+  TProcedure extends AnyTRPCQueryProcedure
     ? {
         fetch(
           input: inferProcedureInput<TProcedure>
@@ -46,24 +49,28 @@ type OmitNever<TType> = Pick<
  * @internal
  */
 export type DecoratedProcedureRecord<
-  TProcedures extends ProcedureRouterRecord,
+  TProcedures extends CreateRouterOptions,
   TPath extends string = '',
 > = OmitNever<{
-  [TKey in keyof TProcedures]: TProcedures[TKey] extends AnyRouter
+  [TKey in keyof TProcedures]: TProcedures[TKey] extends AnyTRPCRouter
     ? DecoratedProcedureRecord<
         TProcedures[TKey]['_def']['record'],
         `${TPath}${TKey & string}.`
       >
-    : TProcedures[TKey] extends AnyQueryProcedure
+    : TProcedures[TKey] extends AnyTRPCQueryProcedure
       ? DecorateProcedure<TProcedures[TKey]>
-      : never;
+      : TProcedures[TKey] extends CreateRouterOptions
+        ? DecoratedProcedureRecord<
+            TProcedures[TKey],
+            `${TPath}${TKey & string}.`
+          >
+        : never;
 }>;
 
-type CreateTRPCNextLayout<TRouter extends AnyRouter> = DecoratedProcedureRecord<
-  TRouter['_def']['record']
-> & {
-  dehydrate(): Promise<DehydratedState>;
-};
+type CreateTRPCNextLayout<TRouter extends AnyTRPCRouter> =
+  DecoratedProcedureRecord<TRouter['_def']['record']> & {
+    dehydrate(): Promise<DehydratedState>;
+  };
 
 function getQueryKey(
   path: string[],
@@ -86,7 +93,7 @@ function getQueryKey(
  * @param opts
  * @returns
  */
-export function createTRPCNextLayout<TRouter extends AnyRouter>(
+export function createTRPCNextLayout<TRouter extends AnyTRPCRouter>(
   opts: CreateTRPCNextLayoutOptions<TRouter>
 ): CreateTRPCNextLayout<TRouter> {
   function getState() {
@@ -138,17 +145,17 @@ export function createTRPCNextLayout<TRouter extends AnyRouter>(
     }
 
     const fullPath = path.join('.');
-    const procedure = opts.router._def.procedures[fullPath] as AnyProcedure;
+    const procedure = opts.router._def.procedures[fullPath] as AnyTRPCProcedure;
 
-    const type: ProcedureType = 'query';
+    const type: TRPCProcedureType = 'query';
 
-    const input = callOpts.args[0];
+    const input = callOpts.args[0] as GetRawInputFn;
     const queryKey = getQueryKey(path, input, lastPart === 'fetchInfinite');
 
     if (lastPart === 'fetchInfinite') {
       return queryClient.fetchInfiniteQuery(queryKey, () =>
         procedure({
-          rawInput: input,
+          getRawInput: async () => input,
           path: fullPath,
           ctx,
           type,
@@ -158,7 +165,7 @@ export function createTRPCNextLayout<TRouter extends AnyRouter>(
 
     return queryClient.fetchQuery(queryKey, () =>
       procedure({
-        rawInput: input,
+        getRawInput: async () => input,
         path: fullPath,
         ctx,
         type,
