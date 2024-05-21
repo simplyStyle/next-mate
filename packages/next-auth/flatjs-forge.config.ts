@@ -10,7 +10,7 @@ export default defineConfig({
     },
     entryPointOptions: {
       libraries: {
-        importedLibraries: ['next', '@lucia-auth/oauth', 'lucia', 'zod'],
+        importedLibraries: ['next', 'zod'],
       },
     },
     dtsFilter: (dtsFile) =>

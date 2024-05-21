@@ -47,7 +47,7 @@ export function CreatePostForm() {
           id="title"
           name="title"
           type="text"
-          disabled={addPost.isLoading}
+          disabled={addPost.isPending}
           className={
             'py-2 input' +
             (addPost.error?.data?.zod?.title ? ' input--error' : '')
@@ -81,7 +81,7 @@ export function CreatePostForm() {
       </div>
 
       <fieldset>
-        <input type="submit" disabled={addPost.isLoading} className="button" />
+        <input type="submit" disabled={addPost.isPending} className="button" />
         {addPost.error && !addPost.error.data?.zod && (
           <p style={{ color: 'red' }}>
             {addPost.error.message}

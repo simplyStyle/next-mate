@@ -1,6 +1,7 @@
 import { createAuthMiddleware } from '@hyperse-io/next-auth';
 import { type NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
+import { env } from './config/env';
 import { locales, pathnames } from './navigation';
 
 const publicPages = [
@@ -21,7 +22,11 @@ const intlMiddleware = createIntlMiddleware({
 // Note that this callback is only invoked if
 // the `authorized` callback has returned `true`
 // and not for pages listed in `pages`.
-const authMiddleware = createAuthMiddleware(intlMiddleware, {});
+const authMiddleware = createAuthMiddleware(intlMiddleware, {
+  port: env.PORT,
+  luciaAuthUrl: env.LUCIA_AUTH_URL,
+  luciaAuthSecret: env.LUCIA_AUTH_SECRET,
+});
 
 export default function middleware(req: NextRequest) {
   const publicPathnameRegex = RegExp(

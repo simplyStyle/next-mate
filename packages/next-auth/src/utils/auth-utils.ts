@@ -1,10 +1,11 @@
-import { OAuthRequestError } from '@lucia-auth/oauth';
+export declare class OAuthRequestError extends Error {
+  request: Request;
+  response: Response;
+  message: 'OAUTH_REQUEST_FAILED';
+  constructor(request: Request, response: Response);
+}
 
-export const handleRequest = async <
-  ResponseBody extends {
-    //
-  },
->(
+export const handleRequest = async <ResponseBody extends object>(
   request: Request
 ): Promise<ResponseBody> => {
   request.headers.set('User-Agent', 'lucia');

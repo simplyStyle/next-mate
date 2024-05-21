@@ -1,11 +1,10 @@
-import { getSession } from '@hyperse-io/next-auth';
+import { type IGetSessionReturn, getSession } from '@hyperse-io/next-auth';
 import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
-import { type Session } from 'lucia';
 import { auth } from '@/auth/lucia';
 import { prisma } from './prisma';
 
 interface CreateContextInnerOptions {
-  session: Session | null;
+  session: IGetSessionReturn;
 }
 
 /**
@@ -30,9 +29,9 @@ export async function createContext(
     Partial<FetchCreateContextFnOptions>
 > {
   // RSC: for API-response caching see https://trpc.io/docs/caching
-  const session = await getSession(auth, opts.req?.method ?? 'GET');
+  const sessionResult = await getSession(auth);
   const contextInner = await createContextInner({
-    session,
+    session: sessionResult,
   });
   return {
     ...contextInner,

@@ -1,32 +1,29 @@
-import { createGithubProvider } from '@hyperse-io/next-auth';
-import { prisma } from '@lucia-auth/adapter-prisma';
-import { lucia } from 'lucia';
-import { nextjs_future } from 'lucia/middleware';
+import {
+  Lucia,
+  PrismaAdapter,
+  TimeSpan,
+  createGithubProvider,
+  createPasswordProvider,
+} from '@hyperse-io/next-auth';
 import { env } from '@/config/env';
 import { prisma as prismaClient } from '@/server/prisma';
 
-export const auth = lucia({
-  adapter: prisma(prismaClient, {
-    key: 'key', // model Key {}
-    user: 'user', // model User {}
-    session: 'session', // model Session {}
-  }),
-  env: process.env.NODE_ENV === 'development' ? 'DEV' : 'PROD',
-  middleware: nextjs_future(),
+export const auth = new Lucia(new PrismaAdapter(prismaClient), {
+  sessionExpiresIn: new TimeSpan(1, 'd'),
   sessionCookie: {
-    expires: false,
-  },
-  getUserAttributes: (data) => {
-    return {
-      username: data.username,
-      email: data.email,
-    };
+    attributes: {
+      secure: process.env.IS_DEV == 'false',
+    },
   },
 });
 
 export type Auth = typeof auth;
 
-export const githubAuth = createGithubProvider(auth, {
+export const githubAuth = createGithubProvider({
   clientId: env.GITHUB_CLIENT_ID,
   clientSecret: env.GITHUB_CLIENT_SECRET,
+});
+
+export const passwordAuth = createPasswordProvider({
+  lucia: auth,
 });

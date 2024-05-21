@@ -1,18 +1,14 @@
-declare namespace Lucia {
-  // lucia-auth.com/basics/database/
-  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-  type Auth = import('@/auth/lucia').Auth;
+import { type Auth } from '@/auth/lucia';
 
-  type DatabaseUserAttributes = {
-    username: string;
+declare module 'lucia' {
+  interface Register {
+    Lucia: Auth;
+    DatabaseSessionAttributes: DatabaseSessionAttributes;
+    DatabaseUserAttributes: DatabaseUserAttributes;
+  }
+  interface DatabaseSessionAttributes {}
+
+  interface DatabaseUserAttributes {
     email: string;
-  };
-
-  type DatabaseSessionAttributes = {
-    //
-  };
-
-  type KeySchema = {
-    //
-  };
+  }
 }

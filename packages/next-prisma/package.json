@@ -1,0 +1,77 @@
+{
+  "name": "@hyperse-io/next-prisma",
+  "version": "1.0.0",
+  "homepage": "https://github.com/hyperse-io/next-prisma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperse-io/next-prisma",
+    "directory": "packages/next-prisma"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Hyperse",
+    "url": "https://github.com/hyperse-io"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin/",
+    "dist/",
+    "index.js",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "flatjs-forge build -d -c",
+    "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
+    "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
+    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
+    "lint": "eslint . --ext .ts,.mts,.tsx,.js,.jsx,.cjs,.mjs --cache --cache-location ../../.cache/eslint/next-prisma.eslintcache",
+    "test": "run-s test-unit",
+    "test-unit": "vitest run --passWithNoTests",
+    "test-coverage": "vitest run --coverage",
+    "test-unit-watch": "vitest watch --ui",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@prisma/generator-helper": "5.13.0",
+    "@prisma/internals": "5.13.0",
+    "dotenv": "16.4.5",
+    "fs": "^0.0.1-security",
+    "glob": "^10.3.15",
+    "path": "^0.12.7",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@armit/eslint-config-bases": "^0.1.5",
+    "@flatjs/forge": "2.0.0",
+    "@types/node": "20.12.10",
+    "@vitest/coverage-istanbul": "1.6.0",
+    "@vitest/ui": "1.6.0",
+    "eslint": "8.55.0",
+    "fastify": "^4.27.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.2.5",
+    "rimraf": "5.0.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5",
+    "vite": "5.2.11",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "1.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "_release/package"
+  }
+}

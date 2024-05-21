@@ -24,9 +24,9 @@ export const Signup = () => {
       if (error) setError(undefined);
       const result = await mutateAsync(data);
       if (result.status === 201) {
-        router.push('/');
+        router.push('/login');
       } else {
-        setError(result.message);
+        setError(JSON.stringify(result.message));
       }
     },
     [error, mutateAsync, router]
@@ -47,10 +47,10 @@ export const Signup = () => {
             {...register('username')}
           />
           <input
-            type="email"
-            placeholder="Type your email..."
+            type="username"
+            placeholder="Type your username..."
             className="input input-bordered w-full max-w-xs p-1"
-            {...register('email')}
+            {...register('username')}
           />
           <input
             type="password"
