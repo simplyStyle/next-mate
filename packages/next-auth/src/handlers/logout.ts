@@ -1,32 +1,40 @@
-import { type Auth } from 'lucia';
-import { headers, cookies } from 'next/headers.js';
-import { NextResponse, type NextRequest } from 'next/server.js';
-import { authEnv } from '../auth-env.js';
+import { cookies } from 'next/headers.js';
+import { type NextRequest, NextResponse } from 'next/server.js';
+import { type Lucia } from '../lucia/core.js';
+import { validateRequest } from '../providers/password/validateRequest.js';
 
-export const logoutHandler = async (
-  auth: Auth,
+export async function logoutHandler(
+  lucia: Lucia,
   request: NextRequest,
-  handler?: (request: NextRequest) => Promise<void>
-) => {
-  const authRequest = auth.handleRequest(request.method, {
-    headers,
-    cookies,
-  });
-  // check if user is authenticated
-  const session = await authRequest.validate();
+  options: {
+    handler?: (request: NextRequest) => Promise<void>;
+    path?: string;
+    logoutPath: string;
+  } = {
+    logoutPath: '',
+  }
+) {
+  const { session } = await validateRequest(lucia);
   if (!session) {
-    return new Response('Unauthorized', {
+    return new NextResponse('Unauthorized', {
       status: 401,
     });
   }
 
-  // customized logout handle?
-  await handler?.(request);
+  if (options?.handler) {
+    await options.handler?.(request);
+  }
 
-  // make sure to invalidate the current session!
-  await auth.invalidateSession(session.sessionId);
-  // delete session cookie
-  authRequest.setSession(null);
-  // redirect to login page
-  return NextResponse.redirect(new URL('/login', authEnv?.LUCIA_AUTH_URL));
-};
+  await lucia.invalidateSession(session.token);
+
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  );
+
+  return NextResponse.redirect(
+    new URL(options?.path ?? '/login', options.logoutPath)
+  );
+}

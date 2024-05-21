@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.5",
-    "@flatjs/forge": "2.0.6",
+    "@flatjs/forge": "2.0.0",
     "@types/node": "20.12.10",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",

@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from 'next/server.js';
-import { authEnv } from './auth-env.js';
 import { ensureSlash } from './utils/auth-utils.js';
 
 type AuthMiddlewareOptions = {
@@ -11,6 +10,10 @@ type AuthMiddlewareOptions = {
    * The Internal request verification code, Will be consumed by `api/auth/session`
    */
   localFetchCode?: string;
+
+  port: string;
+  luciaAuthUrl: string;
+  luciaAuthSecret: string;
 };
 
 /**
@@ -22,17 +25,20 @@ type AuthMiddlewareOptions = {
  */
 const getSession = async (
   request: NextRequest,
-  config: AuthMiddlewareOptions = {}
+  config: AuthMiddlewareOptions = {
+    port: '',
+    luciaAuthUrl: '',
+    luciaAuthSecret: '',
+  }
 ) => {
   try {
     const cookie = request.headers.get('cookie') || '';
+    const { port, luciaAuthSecret } = config;
     const localBaseUrl = (
-      config.localBaseUrl
-        ? config.localBaseUrl
-        : `http://127.0.0.1:${authEnv?.PORT}`
+      config.localBaseUrl ? config.localBaseUrl : `http://127.0.0.1:${port}`
     ).replace(/\/$/, '');
 
-    const localFetchCode = config.localFetchCode || authEnv?.LUCIA_AUTH_SECRET;
+    const localFetchCode = config.localFetchCode || luciaAuthSecret;
 
     const res = await fetch(
       `${localBaseUrl}/api/auth/session?code=${localFetchCode}`,
@@ -55,24 +61,34 @@ const getSession = async (
 export const createAuthMiddleware =
   (
     nextMiddleware: (request: NextRequest) => NextResponse<unknown>,
-    config: AuthMiddlewareOptions = {}
+    config: AuthMiddlewareOptions = {
+      port: '',
+      luciaAuthUrl: '',
+      luciaAuthSecret: '',
+    }
   ) =>
   async (req: NextRequest) => {
     // Wrapper a proxy to make `getSession` work for `edg` runtime mode.
-    const session = await getSession(req, config);
-    if (!session) {
-      const loginPage = `/login`;
-      const wantToPathname = req.nextUrl.pathname;
-      const wantToHref = authEnv?.LUCIA_AUTH_URL
-        ? `${ensureSlash(authEnv?.LUCIA_AUTH_URL)}${wantToPathname}`
-        : req.nextUrl.href;
+    try {
+      const session = await getSession(req, config);
+      if (!session) {
+        const { luciaAuthUrl } = config;
+        const loginPage = `/login`;
+        const wantToPathname = req.nextUrl.pathname;
+        const wantToHref = luciaAuthUrl
+          ? `${ensureSlash(luciaAuthUrl)}${wantToPathname}`
+          : req.nextUrl.href;
 
-      if (wantToPathname !== loginPage) {
-        // Redirect to signin page by default if not authorized
-        req.nextUrl.pathname = loginPage;
-        req.nextUrl.searchParams.set(`callbackUrl`, wantToHref);
-        return NextResponse.redirect(req.nextUrl);
+        if (wantToPathname !== loginPage) {
+          // Redirect to signin page by default if not authorized
+          req.nextUrl.pathname = loginPage;
+          req.nextUrl.searchParams.set(`callbackUrl`, wantToHref);
+          return NextResponse.redirect(req.nextUrl);
+        }
       }
+    } catch (error) {
+      console.log('error', error);
     }
+
     return nextMiddleware(req);
   };

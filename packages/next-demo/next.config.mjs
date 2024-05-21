@@ -46,6 +46,10 @@ const config = {
       allowedForwardedHosts: ['www.hyperse.net', 'localhost'],
       allowedOrigins: ['www.hyperse.net', 'localhost'],
     },
+    serverComponentsExternalPackages: [
+      '@node-rs/argon2',
+      '@node-rs/bcrypt-darwin-arm64',
+    ],
   },
   /** We run eslint as a separate task in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },

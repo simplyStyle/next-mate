@@ -2,46 +2,50 @@
   "folders": [
     {
       "name": "next-demo",
-      "path": "packages/next-demo"
+      "path": "packages/next-demo",
     },
     {
       "name": "next-env",
-      "path": "packages/next-env"
+      "path": "packages/next-env",
     },
     {
       "name": "next-auth",
-      "path": "packages/next-auth"
+      "path": "packages/next-auth",
     },
     {
       "name": "next-core",
-      "path": "packages/next-core"
+      "path": "packages/next-core",
     },
     {
       "name": "next-graphql",
-      "path": "packages/next-graphql"
+      "path": "packages/next-graphql",
+    },
+    {
+      "name": "next-prisma",
+      "path": "packages/next-prisma",
     },
     {
       "name": "root",
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "extensions": {
-    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
   },
   "settings": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
-      "source.organizeImports": "never"
+      "source.organizeImports": "never",
     },
     "files.associations": {
-      "*.css": "tailwindcss"
+      "*.css": "tailwindcss",
     },
     // Disable vscode formatting for js,jsx,ts,tsx files
     // to allow dbaeumer.vscode-eslint to format them
     "[javascript]": {
-      "editor.formatOnSave": false
+      "editor.formatOnSave": false,
     },
     "typescript.enablePromptUseWorkspaceTsdk": true,
     // https://github.com/Microsoft/vscode-eslint#mono-repository-setup
@@ -50,8 +54,9 @@
       "./packages/next-env",
       "./packages/next-auth",
       "./packages/next-core",
-      "./packages/next-graphql"
+      "./packages/next-graphql",
+      "./packages/next-prisma",
     ],
-    "typescript.tsdk": "root/node_modules/typescript/lib"
-  }
+    "typescript.tsdk": "root/node_modules/typescript/lib",
+  },
 }

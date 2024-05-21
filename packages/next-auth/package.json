@@ -34,7 +34,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "flatjs-forge build -c",
+    "generate": "prisma generate --schema=./src/adapters/prisma/lucia.prisma && node copyPrisma.js",
+    "build": "yarn generate && flatjs-forge build  -c",
     "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
     "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
     "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
@@ -46,20 +47,22 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@lucia-auth/oauth": "^3.5.3",
+    "arctic": "1.8.1",
+    "oslo": "1.2.0",
+    "prisma": "5.13.0",
     "zod": "^3.23.7"
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.5",
-    "@flatjs/forge": "2.0.6",
+    "@flatjs/forge": "2.0.0",
     "@types/node": "20.12.10",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",
     "eslint": "8.55.0",
-    "lucia": "^2.x",
     "next": "^14.2.3",
     "npm-run-all": "4.1.5",
     "prettier": "3.2.5",
+    "prisma": "^5.13.0",
     "react": "^18.3.1",
     "rimraf": "5.0.5",
     "rollup-plugin-preserve-directives": "0.4.0",
@@ -70,8 +73,8 @@
     "vitest": "1.6.0"
   },
   "peerDependencies": {
-    "lucia": "^2.x",
-    "next": "^14.2.3"
+    "next": "^14.2.3",
+    "react": "^18.3.1"
   },
   "engines": {
     "node": ">=18.0.0"

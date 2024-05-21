@@ -15,5 +15,8 @@
   ],
   "[javascript]": {
     "editor.formatOnSave": false
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
   }
 }

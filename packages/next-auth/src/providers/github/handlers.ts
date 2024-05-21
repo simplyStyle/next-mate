@@ -1,19 +1,24 @@
-import { OAuthRequestError } from '@lucia-auth/oauth';
-import { type GithubAuth } from '@lucia-auth/oauth/providers';
-import { type Auth } from 'lucia';
-import { cookies, headers } from 'next/headers.js';
+import { type ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
+import { cookies } from 'next/headers.js';
 import { NextResponse, type NextRequest } from 'next/server.js';
-import { getSession } from '../../utils/index.js';
+import { OAuth2RequestError, generateState } from 'oslo/oauth2';
+import { type Lucia, generateId } from '../../lucia/index.js';
+import { createSessionAndCookie } from '../../utils/createSessionAndCookie.js';
+import { getSession } from '../../utils/get-session.js';
+import { type OAuth2Provider } from '../providerType.js';
 
-const COOKIE_STATES = 'github_oauth_state';
-const REDIRECT_URI_WITH_RETURN_URI = 'return_uri';
+interface GitHubUser {
+  id: string;
+  login: string;
+}
 
-export const authorizeHandler = async (
-  auth: Auth,
-  provider: GithubAuth,
-  request: NextRequest
-) => {
-  const session = await getSession(auth, request.method);
+export async function authorizeHandler(
+  lucia: Lucia,
+  provider: OAuth2Provider,
+  cookieAttributes: Partial<ResponseCookie>
+) {
+  const sessions = await getSession(lucia);
+  const session = sessions?.session;
   if (session) {
     return new Response(null, {
       status: 302,
@@ -23,53 +28,28 @@ export const authorizeHandler = async (
     });
   }
 
-  const returnUrl = request.nextUrl.searchParams.get('callbackUrl') || '/';
+  const state = generateState();
+  const url = await provider.createAuthorizationURL(state);
 
-  // You can get a new authorization url with getAuthorizationUrl(). It will return a url and a state.
-  const [url, state] = await provider.getAuthorizationUrl();
-
-  const redirectUri = url.searchParams.get('redirect_uri');
-
-  const redirectUriWithReturnUri =
-    redirectUri?.toString() +
-    `?${REDIRECT_URI_WITH_RETURN_URI}=${encodeURIComponent(returnUrl)}`;
-
-  url.searchParams.set('redirect_uri', redirectUriWithReturnUri);
-
-  const finalRedirectUri = url.toString();
-
-  cookies().set(COOKIE_STATES, state, {
+  cookies().set('github_oauth_state', state, {
     path: '/',
-    // only readable in the server
     httpOnly: true,
-    // set to `true` in production (HTTPS)
-    secure: process.env.NODE_ENV === 'production',
-    // a reasonable expiration date, seconds
-    maxAge: 60 * 60,
+    maxAge: 60 * 10, // 10 minutes
+    sameSite: 'lax',
+    secure: true, // set `Secure` flag in HTTPS
+    ...cookieAttributes,
   });
 
-  // redirect to authorization url
-  return NextResponse.redirect(finalRedirectUri, {
-    status: 302,
-  });
-};
+  return NextResponse.redirect(url);
+}
 
-/**
- * Upon authentication, the provider will redirect the user back to your application (GET request).
- * The url includes a code, and a state if the provider supports it. If a state is used, make sure to check if the state in the query params is the same as the one stored as a cookie.
- * @returns
- */
-export const authorizeCallbackHandler = async (
-  auth: Auth,
-  provider: GithubAuth,
+export async function authorizeCallbackHandler(
+  lucia: Lucia,
+  provider: OAuth2Provider,
   request: NextRequest
-) => {
-  const authRequest = auth.handleRequest(request.method, {
-    headers,
-    cookies,
-  });
-
-  const session = await authRequest.validate();
+) {
+  const sessions = await getSession(lucia);
+  const session = sessions?.session;
   if (session) {
     return new Response(null, {
       status: 302,
@@ -79,60 +59,70 @@ export const authorizeCallbackHandler = async (
     });
   }
 
-  const cookieStore = cookies();
-  const storedState = cookieStore.get(COOKIE_STATES)?.value;
   const url = new URL(request.url);
-  const state = url.searchParams.get('state');
   const code = url.searchParams.get('code');
-
-  // validate state
-  if (!storedState || !state || storedState !== state || !code) {
-    return new Response(null, {
+  const state = url.searchParams.get('state');
+  const storedState = cookies().get('github_oauth_state')?.value ?? null;
+  if (!code || !state || !storedState || state !== storedState) {
+    return new NextResponse(null, {
       status: 400,
     });
   }
 
   try {
-    const { getExistingUser, githubUser, createUser } =
-      await provider.validateCallback(code);
+    const tokens = await provider.validateAuthorizationCode(code);
+    const githubUserResponse = await fetch('https://api.github.com/user', {
+      headers: {
+        Authorization: `Bearer ${tokens.accessToken}`,
+      },
+    });
+    const githubUser: GitHubUser = await githubUserResponse.json();
 
-    const getUser = async () => {
-      const existingUser = await getExistingUser();
-      if (existingUser) return existingUser;
-      return await createUser({
-        attributes: {
-          username: githubUser.login,
-          email: githubUser.email || '',
+    const existingUsers = await lucia.getAuthorized({
+      providerId: githubUser.id?.toString(),
+    });
+    const existingUser = existingUsers?.[0];
+
+    if (existingUser) {
+      await createSessionAndCookie(lucia, existingUser.userId);
+      return new NextResponse(null, {
+        status: 302,
+        headers: {
+          Location: '/',
         },
       });
-    };
+    }
 
-    const user = await getUser();
-    const session = await auth.createSession({
-      userId: user.userId,
-      attributes: {},
+    const userId = generateId(15);
+    const sessionId = generateId(25);
+    await lucia.createUser({
+      providerId: githubUser.id?.toString(),
+      username: githubUser.login,
+      userId: userId,
+      authId: sessionId,
+      providerMethod: 'github',
+      userAttributes: {},
     });
 
-    authRequest.setSession(session);
-
-    const callbackUrl =
-      request.nextUrl.searchParams.get(REDIRECT_URI_WITH_RETURN_URI) || '/';
-
-    return new Response(null, {
+    await createSessionAndCookie(lucia, userId);
+    return new NextResponse(null, {
       status: 302,
       headers: {
-        Location: callbackUrl,
+        Location: '/',
       },
     });
   } catch (e) {
-    if (e instanceof OAuthRequestError) {
+    if (
+      e instanceof OAuth2RequestError &&
+      e.message === 'bad_verification_code'
+    ) {
       // invalid code
-      return new Response(null, {
+      return new NextResponse(null, {
         status: 400,
       });
     }
-    return new Response(null, {
+    return new NextResponse(null, {
       status: 500,
     });
   }
-};
+}
