@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { promisify } from 'node:util';
 import {
   type DMMF,
   type DataSource,

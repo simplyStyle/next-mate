@@ -3,7 +3,7 @@
 import { TimeSpan, createDate, isWithinExpirationDate } from 'oslo';
 import type { Cookie, CookieAttributes } from 'oslo/cookie';
 import { CookieController } from 'oslo/cookie';
-
+import type { PasswordHashingAlgorithm } from './crypto.js';
 import { generateIdFromEntropySize } from './crypto.js';
 import type { Adapter, DatabaseAuth, DatabaseUser } from './database.js';
 import type {
@@ -12,8 +12,7 @@ import type {
   RegisteredDatabaseAuthAttributes,
   RegisteredLucia,
   UserId,
-  PasswordHashingAlgorithm,
-} from './index.js';
+} from './type.js';
 
 type SessionAttributes =
   RegisteredLucia extends Lucia<infer _SessionAttributes, any>

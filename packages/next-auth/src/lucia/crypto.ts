@@ -48,33 +48,3 @@ export class Scrypt implements PasswordHashingAlgorithm {
     return constantTimeEqual(targetKey, decodeHex(key));
   }
 }
-
-export class LegacyScrypt implements PasswordHashingAlgorithm {
-  async hash(password: string): Promise<string> {
-    const salt = encodeHex(crypto.getRandomValues(new Uint8Array(16)));
-    const key = await generateScryptKey(password.normalize('NFKC'), salt);
-    return `s2:${salt}:${encodeHex(key)}`;
-  }
-  async verify(hash: string, password: string): Promise<boolean> {
-    const parts = hash.split(':');
-    if (parts.length === 2) {
-      const [salt, key] = parts;
-      const targetKey = await generateScryptKey(
-        password.normalize('NFKC'),
-        salt,
-        8
-      );
-      return constantTimeEqual(targetKey, decodeHex(key));
-    }
-    if (parts.length !== 3) return false;
-    const [version, salt, key] = parts;
-    if (version === 's2') {
-      const targetKey = await generateScryptKey(
-        password.normalize('NFKC'),
-        salt
-      );
-      return constantTimeEqual(targetKey, decodeHex(key));
-    }
-    return false;
-  }
-}

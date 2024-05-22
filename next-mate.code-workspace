@@ -58,5 +58,8 @@
       "./packages/next-prisma",
     ],
     "typescript.tsdk": "root/node_modules/typescript/lib",
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma",
+    },
   },
 }
