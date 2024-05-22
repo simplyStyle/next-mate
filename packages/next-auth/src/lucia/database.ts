@@ -4,7 +4,7 @@ import type {
   RegisteredDatabaseUserAttributes,
   RegisteredDatabaseAuthAttributes,
   UserId,
-} from './index.js';
+} from './type.js';
 
 export interface Adapter {
   getSessionAndUser(

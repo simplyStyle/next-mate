@@ -45,10 +45,7 @@
     "@prisma/generator-helper": "5.13.0",
     "@prisma/internals": "5.13.0",
     "dotenv": "16.4.5",
-    "fs": "^0.0.1-security",
-    "glob": "^10.3.15",
-    "path": "^0.12.7",
-    "util": "^0.12.5"
+    "glob": "^10.3.15"
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.5",
