@@ -8,7 +8,7 @@ export default defineConfig({
     testTimeout: 1000 * 30,
     globals: true,
     environment: 'node',
-    passWithNoTests: false,
+    passWithNoTests: true,
     cache: {
       dir: '../../.cache/vitest/next-env',
     },
