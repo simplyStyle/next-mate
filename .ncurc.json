@@ -4,8 +4,6 @@
     "@hyperse-io/next-demo",
     "@hyperse-io/next-core",
     "@hyperse-io/next-auth",
-    "@tanstack/react-query",
-    "@tanstack/query-core",
     "eslint"
   ]
 }

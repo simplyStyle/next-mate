@@ -45,7 +45,7 @@
     "deps:update": "yarn dlx npm-check-updates@latest --configFileName .ncurc.json -u --deep --mergeConfig",
     "check:install": "yarn dlx @yarnpkg/doctor@3.1.4 .",
     "install:playwright": "npx playwright install",
-    "postinstall": "is-ci || yarn husky install",
+    "postinstall": "is-ci || yarn husky",
     "patch-package": "patch-package"
   },
   "config": {
@@ -53,31 +53,27 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "resolutions": {
-    "@flatjs/forge": "2.0.0",
-    "@prisma/client": "5.13.0"
-  },
   "dependencies": {
     "cross-env": "7.0.3"
   },
   "devDependencies": {
-    "@armit/eslint-config-bases": "0.1.5",
+    "@armit/eslint-config-bases": "0.1.6",
     "@changesets/changelog-github": "0.5.0",
-    "@changesets/cli": "2.27.1",
+    "@changesets/cli": "2.27.3",
     "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "19.2.2",
     "@types/prettier": "3.0.0",
     "@types/shell-quote": "1.7.5",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.55.0",
+    "eslint": "8.x",
     "husky": "9.0.11",
     "is-ci": "3.0.1",
-    "lint-staged": "15.2.2",
+    "lint-staged": "15.2.4",
     "npm-run-all": "4.1.5",
     "patch-package": "^8.0.0",
     "prettier": "3.2.5",
-    "rimraf": "5.0.5",
+    "rimraf": "5.0.7",
     "shell-quote": "1.8.1",
     "typescript": "5.4.5"
   },
@@ -86,5 +82,5 @@
     "npm": "please-use-yarn",
     "yarn": ">=1.22.0"
   },
-  "packageManager": "yarn@4.2.1"
+  "packageManager": "yarn@4.2.2"
 }

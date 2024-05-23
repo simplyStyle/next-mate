@@ -42,22 +42,22 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@prisma/generator-helper": "5.13.0",
-    "@prisma/internals": "5.13.0",
+    "@prisma/generator-helper": "5.14.0",
+    "@prisma/internals": "5.14.0",
     "dotenv": "16.4.5",
-    "glob": "^10.3.15"
+    "glob": "^10.3.16"
   },
   "devDependencies": {
-    "@armit/eslint-config-bases": "^0.1.5",
-    "@flatjs/forge": "2.0.0",
-    "@types/node": "20.12.10",
+    "@armit/eslint-config-bases": "^0.1.6",
+    "@flatjs/forge": "2.1.0-next.5",
+    "@types/node": "20.12.12",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",
-    "eslint": "8.55.0",
+    "eslint": "8.x",
     "fastify": "^4.27.0",
     "npm-run-all": "4.1.5",
     "prettier": "3.2.5",
-    "rimraf": "5.0.5",
+    "rimraf": "5.0.7",
     "ts-node": "10.9.2",
     "typescript": "5.4.5",
     "vite": "5.2.11",
