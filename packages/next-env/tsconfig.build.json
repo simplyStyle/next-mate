@@ -2,9 +2,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
+    "outDir": "./dist",
     "incremental": false,
     "moduleResolution": "nodenext",
     "paths": {}
   },
+  "include": ["./src/index.ts"],
   "exclude": ["**/*.stories.tsx", "**/*.stories.mdx", ".storybook/**", "dist"]
 }

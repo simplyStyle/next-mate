@@ -30,7 +30,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "flatjs-forge build -d -c",
+    "build": "rimraf dist && tsc -p ./tsconfig.build.json",
     "?build-release": "When https://github.com/atlassian/changesets/issues/432 has a solution we can remove this trick",
     "build-release": "yarn build && rimraf ./_release && yarn pack && mkdir ./_release && tar zxvf ./package.tgz --directory ./_release && rm ./package.tgz",
     "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
@@ -47,7 +47,6 @@
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.6",
-    "@flatjs/forge": "2.1.0-next.5",
     "@types/node": "20.12.12",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",
