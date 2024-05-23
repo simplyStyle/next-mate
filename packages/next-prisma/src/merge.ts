@@ -27,7 +27,7 @@ const { getDMMF, getConfig } = getPrismaConfig;
 
 export interface prismaMergeOptions {
   input: string[];
-  output: string;
+  output?: string;
   luciaPrismaModel?: string;
 }
 
@@ -46,7 +46,7 @@ async function getSchema(schemaString: string, schemaPath: string) {
     const models: Model[] = dmmf.datamodel.models.map((model: any) => ({
       ...model,
       doubleAtIndexes: customAttributes[model.name]?.doubleAtIndexes,
-      fields: model.fields.map((field) =>
+      fields: model.fields.map((field: any) =>
         // Inject columnName and db.Type from the parsed fieldMappings above
         {
           const attributes =
@@ -149,7 +149,7 @@ function getCustomAttributes(datamodel: string) {
 function mixModels(inputModels: Model[]) {
   const models: Record<string, Model> = {};
   for (const inputModel of inputModels) {
-    const existingModel: Model | null = models[inputModel.name];
+    const existingModel: Model | undefined = models[inputModel.name];
 
     // if the model already exists in our found models, merge the fields
     if (existingModel) {
@@ -162,8 +162,9 @@ function mixModels(inputModels: Model[]) {
           );
 
           // assign columnName (@map) based on existing field if found
-          const existingField: Field = existingModel.fields[existingFieldIndex];
-          if (!field.columnName && existingField.columnName) {
+          const existingField: Field | undefined =
+            existingModel.fields[existingFieldIndex];
+          if (!field.columnName && existingField?.columnName) {
             field.columnName = existingField.columnName;
           }
 
