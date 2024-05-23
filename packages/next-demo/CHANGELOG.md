@@ -1,5 +1,19 @@
 # @hyperse-io/next-demo
 
+## 1.1.0
+
+### Minor Changes
+
+- [`26884a6`](https://github.com/hyperse-io/next-mate/commit/26884a631ced2a0d2d74a70eb6f4e14e89a7dec7) Thanks [@hyperse-net](https://github.com/hyperse-net)! - upgrade trpc to V11 beta
+
+### Patch Changes
+
+- Updated dependencies [[`26884a6`](https://github.com/hyperse-io/next-mate/commit/26884a631ced2a0d2d74a70eb6f4e14e89a7dec7)]:
+  - @hyperse-io/next-prisma@1.1.0
+  - @hyperse-io/next-auth@1.1.0
+  - @hyperse-io/next-core@1.1.0
+  - @hyperse-io/next-env@1.1.0
+
 ## 1.0.4
 
 ### Patch Changes
