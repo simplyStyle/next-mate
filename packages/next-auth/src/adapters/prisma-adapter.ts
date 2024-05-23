@@ -1,4 +1,4 @@
-import { type PrismaClient, type Prisma } from '@prisma/client';
+import type { PrismaClient, Prisma } from '@prisma/client';
 import { generateRandomString, alphabet } from 'oslo/crypto';
 import {
   type Adapter,

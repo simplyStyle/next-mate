@@ -36,10 +36,10 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -48,7 +48,7 @@ jobs:
 
       # see https://github.com/vercel/next.js/pull/27362
       - name: Restore nextjs build next-demo from cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ${{ github.workspace }}/packages/next-demo/.next/cache
@@ -59,6 +59,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-next-demo-${{ hashFiles('**/yarn.lock') }}-
 
+      - name: Generate typings
+        working-directory: packages/next-demo
+        run: |
+          yarn generate
       # - name: Typecheck
       #   working-directory: packages/next-demo
       #   run: |
