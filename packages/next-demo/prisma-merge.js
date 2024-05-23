@@ -2,7 +2,7 @@ import { prismaMerge } from '@hyperse-io/next-prisma';
 import { luciaPrismaContent } from '@hyperse-io/next-auth';
 
 prismaMerge({
-  prePrismaModel: luciaPrismaContent,
+  luciaPrismaModel: luciaPrismaContent,
   input: ['prisma/base.prisma'],
 })
   .then(() => {
