@@ -48,9 +48,7 @@
   },
   "dependencies": {
     "arctic": "1.9.0",
-    "oslo": "1.2.0",
-    "prisma": "5.13.0",
-    "zod": "^3.23.8"
+    "oslo": "1.2.0"
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.6",

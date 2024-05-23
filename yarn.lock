@@ -2290,7 +2290,6 @@ __metadata:
     vite: "npm:5.2.11"
     vite-tsconfig-paths: "npm:4.3.2"
     vitest: "npm:1.6.0"
-    zod: "npm:^3.23.8"
   peerDependencies:
     next: ^14.2.3
   languageName: unknown
