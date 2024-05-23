@@ -12,7 +12,7 @@ export const auth = new Lucia(new PrismaAdapter(prismaClient), {
   sessionExpiresIn: new TimeSpan(1, 'd'),
   sessionCookie: {
     attributes: {
-      secure: process.env.IS_DEV == 'false',
+      secure: process.env.NODE_ENV === 'production',
     },
   },
 });
