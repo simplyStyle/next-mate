@@ -3,7 +3,7 @@ import { getBooks, usersData } from './mock-data.js';
 import { startTestAppServer } from './test-server.js';
 
 describe('Basic fetch of graphql fetch', () => {
-  let port, app;
+  let port: any, app: any;
 
   beforeAll(async () => {
     ({ port, app } = await startTestAppServer());
@@ -30,7 +30,7 @@ describe('Basic fetch of graphql fetch', () => {
       authTokenHeaderKey: 'auth-token',
     });
 
-    const response = await fetcher.fetch<{ books }>(
+    const response = await fetcher.fetch<{ books: any }>(
       `{ books { id, title, author } }`,
       {}
     );
@@ -48,7 +48,7 @@ describe('Basic fetch of graphql fetch', () => {
     });
 
     await expect(() =>
-      fetcher.fetch<{ books }>(`{ books }`, {})
+      fetcher.fetch<{ books: any }>(`{ books }`, {})
     ).rejects.toThrowError(
       'Field "books" of type "[Book!]!" must have a selection of subfields. Did you mean "books { ... }"?'
     );

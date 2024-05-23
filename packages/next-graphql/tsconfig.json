@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "jsx": "preserve",
+    "noImplicitAny": true,
     "allowJs": false,
     "noEmit": false,
     "incremental": true,
