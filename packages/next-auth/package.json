@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@armit/eslint-config-bases": "^0.1.6",
+    "@prisma/client": "^5.14.0",
     "@types/node": "20.12.12",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",
@@ -70,7 +71,13 @@
     "vitest": "1.6.0"
   },
   "peerDependencies": {
+    "@prisma/client": "^5.14.0",
     "next": "^14.2.3"
+  },
+  "peerDependenciesMeta": {
+    "@prisma/client": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=18.0.0"

@@ -2272,6 +2272,7 @@ __metadata:
   resolution: "@hyperse-io/next-auth@workspace:packages/next-auth"
   dependencies:
     "@armit/eslint-config-bases": "npm:^0.1.6"
+    "@prisma/client": "npm:^5.14.0"
     "@types/node": "npm:20.12.12"
     "@vitest/coverage-istanbul": "npm:1.6.0"
     "@vitest/ui": "npm:1.6.0"
@@ -2291,7 +2292,11 @@ __metadata:
     vite-tsconfig-paths: "npm:4.3.2"
     vitest: "npm:1.6.0"
   peerDependencies:
+    "@prisma/client": ^5.14.0
     next: ^14.2.3
+  peerDependenciesMeta:
+    "@prisma/client":
+      optional: true
   languageName: unknown
   linkType: soft
 
