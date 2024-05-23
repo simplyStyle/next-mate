@@ -7,13 +7,11 @@ export default defineConfig({
   resolve: {
     alias: [],
   },
+  cacheDir: '../../.cache/vitest/next-demo',
   test: {
     setupFiles: 'dotenv/config',
     globals: true,
     exclude: [...configDefaults.exclude, '**/playwright/**'],
-    cache: {
-      dir: '../../.cache/vitest/next-demo',
-    },
     alias: {
       '@/': fileURLToPath(new URL('./src/', import.meta.url)),
     },

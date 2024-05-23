@@ -3,15 +3,13 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   plugins: [tsConfigPaths()],
+  cacheDir: '../../.cache/vitest/next-prisma',
   test: {
     // Makebe suite for local debug
     testTimeout: 1000 * 30,
     globals: true,
     environment: 'node',
     passWithNoTests: true,
-    cache: {
-      dir: '../../.cache/vitest/next-prisma',
-    },
     coverage: {
       provider: 'istanbul',
       reporter: ['json-summary', 'html'],

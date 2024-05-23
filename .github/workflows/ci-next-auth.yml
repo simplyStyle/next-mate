@@ -53,11 +53,6 @@ jobs:
       - name: 📥 Monorepo install
         uses: ./.github/actions/yarn-nm-install
 
-      - name: Patch next typings
-        working-directory: './'
-        run: |
-          yarn patch-package
-
       - name: Typecheck
         working-directory: packages/next-auth
         run: |
