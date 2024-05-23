@@ -44,7 +44,6 @@
   "dependencies": {
     "@prisma/generator-helper": "5.14.0",
     "@prisma/internals": "5.14.0",
-    "dotenv": "16.4.5",
     "glob": "^10.3.16"
   },
   "devDependencies": {

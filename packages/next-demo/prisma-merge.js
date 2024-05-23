@@ -1,5 +1,8 @@
 import { prismaMerge } from '@hyperse-io/next-prisma';
 import { luciaPrismaContent } from '@hyperse-io/next-auth';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 prismaMerge({
   luciaPrismaModel: luciaPrismaContent,

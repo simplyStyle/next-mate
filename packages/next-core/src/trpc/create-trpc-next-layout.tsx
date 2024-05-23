@@ -153,23 +153,28 @@ export function createTRPCNextLayout<TRouter extends AnyTRPCRouter>(
     const queryKey = getQueryKey(path, input, lastPart === 'fetchInfinite');
 
     if (lastPart === 'fetchInfinite') {
-      return queryClient.fetchInfiniteQuery(queryKey, () =>
+      return queryClient.fetchInfiniteQuery({
+        queryKey: queryKey,
+        queryFn: () =>
+          procedure({
+            getRawInput: async () => input,
+            path: fullPath,
+            ctx,
+            type,
+          }),
+        initialPageParam: undefined,
+      });
+    }
+
+    return queryClient.fetchQuery({
+      queryKey: queryKey,
+      queryFn: () =>
         procedure({
           getRawInput: async () => input,
           path: fullPath,
           ctx,
           type,
-        })
-      );
-    }
-
-    return queryClient.fetchQuery(queryKey, () =>
-      procedure({
-        getRawInput: async () => input,
-        path: fullPath,
-        ctx,
-        type,
-      })
-    );
+        }),
+    });
   }) as CreateTRPCNextLayout<TRouter>;
 }

@@ -8,10 +8,7 @@ import {
   type GeneratorConfig,
 } from '@prisma/generator-helper';
 import getPrismaConfig from '@prisma/internals';
-import dotenv from 'dotenv';
 import * as glob from 'glob';
-
-dotenv.config();
 
 import {
   deserializeEnums,
