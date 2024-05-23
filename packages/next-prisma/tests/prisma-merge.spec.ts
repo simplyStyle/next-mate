@@ -14,7 +14,7 @@ test('merge prisma', async () => {
 `;
 
   await prismaMerge({
-    prePrismaModel: luciaPrismaContent,
+    luciaPrismaModel: luciaPrismaContent,
     input: ['tests/prisma/test1.prisma'],
     output: 'tests/prisma/testMerge1.prisma',
   });
@@ -34,7 +34,7 @@ test('merge prisma cover', async () => {
   `;
 
   await prismaMerge({
-    prePrismaModel: luciaPrismaContent,
+    luciaPrismaModel: luciaPrismaContent,
     input: ['tests/prisma/test1.prisma', 'tests/prisma/test2.prisma'],
     output: 'tests/prisma/testMerge2.prisma',
   });

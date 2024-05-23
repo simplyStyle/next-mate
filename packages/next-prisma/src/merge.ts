@@ -31,7 +31,7 @@ const { getDMMF, getConfig } = getPrismaConfig;
 export interface prismaMergeOptions {
   input: string[];
   output: string;
-  prePrismaModel?: string;
+  luciaPrismaModel?: string;
 }
 
 const readFile = promisify(fs.readFile);
@@ -215,14 +215,9 @@ export async function prismaMerge(options: prismaMergeOptions) {
   const {
     input: inputs,
     output = 'prisma/schema.prisma',
-    prePrismaModel = '',
+    luciaPrismaModel = '',
   } = options;
   const schemasToMix: Schema[] = [];
-
-  if (prePrismaModel) {
-    const luciaSchema = await getSchema(prePrismaModel, 'luciaPrisma');
-    if (luciaSchema) schemasToMix.push(luciaSchema);
-  }
 
   // load the schema data for all inputs
   for (const input of inputs) {
@@ -234,6 +229,12 @@ export async function prismaMerge(options: prismaMergeOptions) {
       const parsedSchema = await getSchema(schemaString, filePath);
       if (parsedSchema) schemasToMix.push(parsedSchema);
     }
+  }
+
+  // load the schema data for the lucia.prisma to cover all models
+  if (luciaPrismaModel) {
+    const luciaSchema = await getSchema(luciaPrismaModel, 'luciaPrisma');
+    if (luciaSchema) schemasToMix.push(luciaSchema);
   }
 
   // extract all models and mix
