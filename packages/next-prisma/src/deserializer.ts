@@ -64,8 +64,8 @@ function renderAttributes(field: WritableDeep<DMMF.Field>): string {
       // if we have a method defined above with that property, call the method
       .map(
         (property) =>
-          renderAttribute(field)[property] &&
-          renderAttribute(field)[property](field[property])
+          (renderAttribute(field) as any)[property] &&
+          (renderAttribute(field) as any)[property]((field as any)[property])
       )
       // filter out empty strings
       .filter((x) => !!x)
