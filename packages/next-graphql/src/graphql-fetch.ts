@@ -75,18 +75,17 @@ export class GraphqlFetch {
 
     const headers: HeadersInit = {
       ...(typeof normalizedBody === 'string'
-        ? // eslint-disable-next-line @typescript-eslint/naming-convention
-          { 'Content-Type': 'application/json' }
+        ? { 'Content-Type': 'application/json' }
         : {}),
       ...fetchOptions?.headers,
     };
 
     if (authToken) {
-      headers['Authorization'] = `Bearer ${authToken}`;
+      (headers as any)['Authorization'] = `Bearer ${authToken}`;
     }
 
     if (channel) {
-      headers[this.config.channelTokenKey] = channel;
+      (headers as any)[this.config.channelTokenKey] = channel;
     }
 
     const res = await fetch(url.href, {
