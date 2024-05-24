@@ -43,8 +43,8 @@ const config = {
     // typedRoutes: true,
     // Turbo seemingly supports HMR for JSON files, quite handy to handle i18n messages.
     serverActions: {
-      allowedForwardedHosts: ['www.hyperse.net', 'localhost'],
-      allowedOrigins: ['www.hyperse.net', 'localhost'],
+      allowedForwardedHosts: ['www.domain.com', 'localhost'],
+      allowedOrigins: ['www.domain.com', 'localhost'],
     },
     serverComponentsExternalPackages: [
       '@node-rs/argon2',
