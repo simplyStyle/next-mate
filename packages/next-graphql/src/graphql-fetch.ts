@@ -44,12 +44,8 @@ export class GraphqlFetch {
     );
   }
 
-  async fetch<
-    Data,
-    Variables extends Record<string, unknown> = {
-      //
-    },
-  >(
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  async fetch<Data, Variables extends Record<string, unknown> = {}>(
     query: string,
     queryData: ApiFetchOptions<Variables> = {},
     fetchOptions: RequestInit = {}

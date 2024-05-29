@@ -1,4 +1,4 @@
-# @hyperse-io/next-core
+# @hyperse/next-core
 
 ## 1.1.0
 

@@ -1,8 +1,8 @@
-import { HydrateClient } from '@hyperse-io/next-core';
 import { notFound } from 'next/navigation';
 import { queryMe } from '@/data/queries/query-me';
 import { type NextMeQuery } from '@/generated-types';
 import { graphqlRsc, rsc } from '@/server/rsc';
+import { HydrateClient } from '@hyperse/next-core';
 
 export default async function Page(props: PageProps<{ id: string }>) {
   const post = await rsc.post.byId.fetch({ id: props.params.id });

@@ -6,6 +6,7 @@ declare module 'lucia' {
     DatabaseSessionAttributes: DatabaseSessionAttributes;
     DatabaseUserAttributes: DatabaseUserAttributes;
   }
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface DatabaseSessionAttributes {}
 
   interface DatabaseUserAttributes {

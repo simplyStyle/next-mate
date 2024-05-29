@@ -1,8 +1,8 @@
 import FormData from 'form-data';
 import {
   type ExtractableFile,
-  isExtractableFile,
   extractFiles,
+  isExtractableFile,
 } from './extract-files.js';
 
 type Variables = Record<string, unknown>;

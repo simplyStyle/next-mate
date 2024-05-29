@@ -1,12 +1,12 @@
+import { env } from '@/config/env';
+import { prisma as prismaClient } from '@/server/prisma';
 import {
+  createGithubProvider,
+  createPasswordProvider,
   Lucia,
   PrismaAdapter,
   TimeSpan,
-  createGithubProvider,
-  createPasswordProvider,
-} from '@hyperse-io/next-auth';
-import { env } from '@/config/env';
-import { prisma as prismaClient } from '@/server/prisma';
+} from '@hyperse/next-auth';
 
 export const auth = new Lucia(new PrismaAdapter(prismaClient), {
   sessionExpiresIn: new TimeSpan(1, 'd'),

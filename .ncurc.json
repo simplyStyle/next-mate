@@ -1,12 +1,11 @@
 {
   "dep": "prod,dev,bundle,optional,peer",
   "reject": [
-    "@hyperse-io/next-demo",
-    "@hyperse-io/next-env",
-    "@hyperse-io/next-auth",
-    "@hyperse-io/next-core",
-    "@hyperse-io/next-graphql",
-    "@hyperse-io/next-prisma",
-    "eslint"
+    "@hyperse/next-demo",
+    "@hyperse/next-env",
+    "@hyperse/next-auth",
+    "@hyperse/next-core",
+    "@hyperse/next-graphql",
+    "@hyperse/next-prisma"
   ]
 }

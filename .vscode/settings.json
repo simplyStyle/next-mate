@@ -1,7 +1,7 @@
 {
   "typescript.preferences.importModuleSpecifier": "relative",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.organizeImports": "never"
@@ -13,5 +13,12 @@
   // to allow dbaeumer.vscode-eslint to format them
   "[javascript]": {
     "editor.formatOnSave": false
-  }
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
 }

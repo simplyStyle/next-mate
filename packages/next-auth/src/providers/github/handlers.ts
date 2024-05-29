@@ -1,8 +1,8 @@
 import { type ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { cookies } from 'next/headers.js';
-import { NextResponse, type NextRequest } from 'next/server.js';
-import { OAuth2RequestError, generateState } from 'oslo/oauth2';
-import { type Lucia, generateId } from '../../lucia/index.js';
+import { type NextRequest, NextResponse } from 'next/server.js';
+import { generateState, OAuth2RequestError } from 'oslo/oauth2';
+import { generateId, type Lucia } from '../../lucia/index.js';
 import { createSessionAndCookie } from '../../utils/createSessionAndCookie.js';
 import { getSession } from '../../utils/get-session.js';
 import { type OAuth2Provider } from '../providerType.js';

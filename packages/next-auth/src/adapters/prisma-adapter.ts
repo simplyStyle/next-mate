@@ -1,17 +1,17 @@
-import type { PrismaClient, Prisma } from '@prisma/client';
-import { generateRandomString, alphabet } from 'oslo/crypto';
+import { alphabet, generateRandomString } from 'oslo/crypto';
+import type { Prisma } from '@prisma/client';
 import {
   type Adapter,
-  type DatabaseSession,
-  type RegisteredDatabaseSessionAttributes,
-  type DatabaseUser,
   type DatabaseAuth,
-  type RegisteredDatabaseUserAttributes,
-  type RegisteredDatabaseAuthAttributes,
-  type UserId,
+  type DatabaseSession,
+  type DatabaseUser,
   generateIdFromEntropySize,
   type PasswordHashingAlgorithm,
+  type RegisteredDatabaseAuthAttributes,
+  type RegisteredDatabaseSessionAttributes,
+  type RegisteredDatabaseUserAttributes,
   Scrypt,
+  type UserId,
 } from '../lucia/index.js';
 
 interface prismaConfig {
@@ -20,9 +20,7 @@ interface prismaConfig {
   authorized: Prisma.AuthorizedDelegate;
 }
 
-export class PrismaAdapter<_PrismaClient extends PrismaClient>
-  implements Adapter
-{
+export class PrismaAdapter implements Adapter {
   private sessionModel: Prisma.SessionDelegate;
   private userModel: Prisma.UserDelegate;
   private authModel: Prisma.AuthorizedDelegate;

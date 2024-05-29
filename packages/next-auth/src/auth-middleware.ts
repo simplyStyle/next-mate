@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from 'next/server.js';
+import { type NextRequest, NextResponse } from 'next/server.js';
 import { ensureSlash } from './utils/auth-utils.js';
 
 type AuthMiddlewareOptions = {
@@ -53,7 +53,7 @@ const getSession = async (
       }
     );
     return await res.json();
-  } catch (error) {
+  } catch {
     return null;
   }
 };

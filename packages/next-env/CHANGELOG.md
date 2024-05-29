@@ -1,4 +1,4 @@
-# @hyperse-io/next-env
+# @hyperse/next-env
 
 ## 1.1.0
 

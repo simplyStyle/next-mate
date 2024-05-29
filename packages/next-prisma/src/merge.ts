@@ -1,20 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import * as glob from 'glob';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { promisify } from 'node:util';
 import {
-  type DMMF,
   type DataSource,
+  type DMMF,
   type GeneratorConfig,
 } from '@prisma/generator-helper';
 import getPrismaConfig from '@prisma/internals';
-import * as glob from 'glob';
-
 import {
-  deserializeEnums,
   deserializeDatasources,
-  deserializeModels,
+  deserializeEnums,
   deserializeGenerators,
+  deserializeModels,
 } from './deserializer.js';
 import {
   type CustomAttributes,
@@ -106,7 +104,6 @@ function getCustomAttributes(datamodel: string) {
       if (!modelName) return modelDefinitions;
       // Regex for getting our @map attribute
       const mapRegex = new RegExp(/[^@]@map\("(?<name>.*)"\)/);
-      // eslint-disable-next-line regexp/no-unused-capturing-group
       const dbRegex = new RegExp(/(?<type>@db\.(.[^\s@]*))/);
       const relationOnUpdateRegex = new RegExp(
         /onUpdate: (?<op>Cascade|NoAction|Restrict|SetDefault|SetNull)/
@@ -145,7 +142,6 @@ function getCustomAttributes(datamodel: string) {
   );
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 function mixModels(inputModels: Model[]) {
   const models: Record<string, Model> = {};
   for (const inputModel of inputModels) {

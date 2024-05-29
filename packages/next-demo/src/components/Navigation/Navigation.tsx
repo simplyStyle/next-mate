@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl';
 import { use } from 'react';
+import { useTranslations } from 'next-intl';
 import { rsc } from '@/server/rsc';
 import { LocaleSwitcher } from '../LocaleSwitcher/LocaleSwitcher';
 import { LogoutButton } from '../LogoutButton/LogoutButton';

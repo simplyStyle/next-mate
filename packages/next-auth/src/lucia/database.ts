@@ -1,8 +1,8 @@
 import { type PasswordHashingAlgorithm } from 'oslo/password';
 import type {
+  RegisteredDatabaseAuthAttributes,
   RegisteredDatabaseSessionAttributes,
   RegisteredDatabaseUserAttributes,
-  RegisteredDatabaseAuthAttributes,
   UserId,
 } from './type.js';
 

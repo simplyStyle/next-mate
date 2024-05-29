@@ -1,12 +1,12 @@
-import './globals.css';
+import { type PropsWithChildren } from 'react';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { PublicEnvScript } from 'next-runtime-env';
-import { type PropsWithChildren } from 'react';
 import { ClientProvider } from '@/common/client-trpc';
 import { Navigation } from '@/components/Navigation/Navigation';
 import { locales } from '@/navigation';
+import './globals.css';
 
 export default async function LocaleLayout({
   children,

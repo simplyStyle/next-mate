@@ -5,13 +5,10 @@ import { fileURLToPath } from 'node:url';
  * A good practice is to override this base configuration in each package and/or application
  * where we are able to add customization depending on the nature of the project (eslint...).
  */
-import {
-  concatFilesForPrettier,
-  getEslintFixCmd,
-} from './lint-staged.common.mjs';
+import { getEslintFixCmd } from './lint-staged.common.mjs';
 
 /**
- * @type {Record<string, (filenames: string[]) => string | string[] | Promise<string | string[]>>}
+ * @type  {Record<string, (filenames: string[]) => string | string[] | Promise<string | string[]>>}
  */
 const rules = {
   '**/*.{js,jsx,ts,tsx,mjs,cjs}': (filenames) => {
@@ -25,11 +22,6 @@ const rules = {
       maxWarnings: 25,
       files: filenames,
     });
-  },
-  '**/*.{json,md,mdx,css,html,yml,yaml,scss,ts,js,tsx,jsx,mjs}': (
-    filenames
-  ) => {
-    return [`prettier --write ${concatFilesForPrettier(filenames)}`];
   },
 };
 

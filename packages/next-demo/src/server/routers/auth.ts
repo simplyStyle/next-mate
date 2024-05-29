@@ -1,6 +1,6 @@
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { passwordAuth } from '@/auth/lucia';
 import { loginSchema, signUpSchema } from '@/common/validation/auth';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { publicProcedure, router } from '../trpc';
 
 export const authRouter = router({

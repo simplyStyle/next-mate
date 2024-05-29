@@ -1,4 +1,4 @@
-# @hyperse-io/next-graphql
+# @hyperse/next-graphql
 
 ## 1.1.0
 

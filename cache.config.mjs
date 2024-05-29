@@ -15,7 +15,7 @@ export const globalCachePath = resolve(`${__dirname}/.cache`);
  * @returns string
  */
 function sanitize(packageName) {
-  return packageName.replace('/', '.').replace(/[^a-z0-9.@_-]+/gi, '-');
+  return packageName.replace('/', '.').replace(/[^\w.@-]+/g, '-');
 }
 
 /**

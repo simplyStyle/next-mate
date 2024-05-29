@@ -1,12 +1,12 @@
 'use client';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useCallback, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useCallback, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { trpc } from '@/common/client-trpc';
 import { type ISignUp, signUpSchema } from '@/common/validation/auth';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export const Signup = () => {
   const router = useRouter();

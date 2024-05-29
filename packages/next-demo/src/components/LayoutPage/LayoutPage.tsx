@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl';
 import { type ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 import { ExternalLink } from '../ExternalLink/ExternalLink';
 
 type Props = {

@@ -1,4 +1,4 @@
-# @hyperse-io/next-prisma
+# @hyperse/next-prisma
 
 ## 1.1.0
 

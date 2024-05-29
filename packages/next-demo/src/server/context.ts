@@ -1,6 +1,6 @@
-import { type IGetSessionReturn, getSession } from '@hyperse-io/next-auth';
-import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import { auth } from '@/auth/lucia';
+import { getSession, type IGetSessionReturn } from '@hyperse/next-auth';
+import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import { prisma } from './prisma';
 
 interface CreateContextInnerOptions {

@@ -1,8 +1,8 @@
 'use client';
 
-import clsx from 'clsx';
-import { useSelectedLayoutSegment } from 'next/navigation';
 import { type ComponentProps } from 'react';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import clsx from 'clsx';
 import { Link, type pathnames } from '../../navigation';
 
 export function NavigationLink<Pathname extends keyof typeof pathnames>({

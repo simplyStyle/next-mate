@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ESNext",
@@ -9,10 +8,10 @@
     "types": ["vitest/globals"],
     "paths": {
       "@/*": ["./*"],
-      "@hyperse-io/next-core": ["../../../packages/next-core/src/index.js"],
-      "@hyperse-io/next-auth": ["../../../packages/next-auth/src/index.js"],
-      "@hyperse-io/next-env": ["../../../packages/next-env/src/index.js"],
-      "@hyperse-io/next-prisma": ["../../../packages/next-prisma/src/index.js"]
+      "@hyperse/next-core": ["../../../packages/next-core/src/index.js"],
+      "@hyperse/next-auth": ["../../../packages/next-auth/src/index.js"],
+      "@hyperse/next-env": ["../../../packages/next-env/src/index.js"],
+      "@hyperse/next-prisma": ["../../../packages/next-prisma/src/index.js"]
     },
     "plugins": [
       {

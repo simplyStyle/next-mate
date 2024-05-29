@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. 
 */
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 export async function scrypt(
   password: Uint8Array,
   salt: Uint8Array,

@@ -1,4 +1,4 @@
-# @hyperse-io/next-auth
+# @hyperse/next-auth
 
 ## 1.1.0
 
