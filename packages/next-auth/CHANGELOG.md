@@ -1,5 +1,11 @@
 # @hyperse/next-auth
 
+## 1.1.1
+
+### Patch Changes
+
+- [`99fac3f`](https://github.com/hyperse-io/next-mate/commit/99fac3f44f9e1a8dcc9123c887e1043efab945fb) Thanks [@hyperse-net](https://github.com/hyperse-net)! - refactor to `hyperse`
+
 ## 1.1.0
 
 ### Minor Changes
