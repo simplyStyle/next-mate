@@ -1,6 +1,6 @@
-import { githubProviderHandlers } from '@hyperse-io/next-auth';
 import type { NextRequest } from 'next/server';
 import { auth, githubAuth } from '@/auth/lucia';
+import { githubProviderHandlers } from '@hyperse/next-auth';
 
 /**
  * Upon authentication, the provider will redirect the user back to your application (GET request).

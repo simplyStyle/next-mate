@@ -1,15 +1,13 @@
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { TimeSpan, createDate, isWithinExpirationDate } from 'oslo';
+import { createDate, isWithinExpirationDate, TimeSpan } from 'oslo';
 import type { Cookie, CookieAttributes } from 'oslo/cookie';
 import { CookieController } from 'oslo/cookie';
 import type { PasswordHashingAlgorithm } from './crypto.js';
 import { generateIdFromEntropySize } from './crypto.js';
 import type { Adapter, DatabaseAuth, DatabaseUser } from './database.js';
 import type {
+  RegisteredDatabaseAuthAttributes,
   RegisteredDatabaseSessionAttributes,
   RegisteredDatabaseUserAttributes,
-  RegisteredDatabaseAuthAttributes,
   RegisteredLucia,
   UserId,
 } from './type.js';
@@ -17,12 +15,12 @@ import type {
 type SessionAttributes =
   RegisteredLucia extends Lucia<infer _SessionAttributes, any>
     ? _SessionAttributes
-    : {};
+    : object;
 
 type UserAttributes =
   RegisteredLucia extends Lucia<any, infer _UserAttributes>
     ? _UserAttributes
-    : {};
+    : object;
 
 export interface Session extends SessionAttributes {
   id?: number;
@@ -33,14 +31,14 @@ export interface Session extends SessionAttributes {
 }
 
 export interface User extends UserAttributes {
-  id: String;
+  id: string;
   username: string;
 }
 
 export class Lucia<
-  _SessionAttributes extends {} = Record<never, never>,
-  _UserAttributes extends {} = Record<never, never>,
-  _AuthAttributes extends {} = Record<never, never>,
+  _SessionAttributes extends object = Record<never, never>,
+  _UserAttributes extends object = Record<never, never>,
+  _AuthAttributes extends object = Record<never, never>,
 > {
   private adapter: Adapter;
   private sessionExpiresIn: TimeSpan;

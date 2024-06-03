@@ -1,7 +1,4 @@
-const { relative } = require('path');
-const { quote } = require('shell-quote');
-
-const isWin = process.platform === 'win32';
+import path from 'path';
 
 const eslintGlobalRulesForFix = [
   // react-hooks/eslint and react in general is very strict about exhaustively
@@ -30,7 +27,7 @@ const eslintGlobalRulesForFix = [
  * Lint-staged command for running eslint in packages or apps.
  * @param {{cwd: string, files: string[], fix: boolean, fixType?: ('problem'|'suggestion'|'layout'|'directive')[], cache: boolean, rules?: string[], maxWarnings?: number}} params
  */
-const getEslintFixCmd = ({
+export const getEslintFixCmd = ({
   cwd,
   files,
   rules,
@@ -54,35 +51,11 @@ const getEslintFixCmd = ({
     fix ? '--fix' : '',
     cliFixType.length > 0 ? `--fix-type ${cliFixType.join(',')}` : '',
     maxWarnings !== undefined ? `--max-warnings=${maxWarnings}` : '',
-    cliRules.length > 0 ? `--rule ${cliRules.join('--rule ')}` : '',
+    cliRules.length > 0 ? `--rule ${cliRules.join(' --rule ')}` : '',
     files
       // makes output cleaner by removing absolute paths from filenames
-      .map((f) => `"./${relative(cwd, f)}"`)
+      .map((f) => `"./${path.relative(cwd, f)}"`)
       .join(' '),
   ].join(' ');
   return `eslint ${args}`;
-};
-
-/**
- * Concatenate and escape a list of filenames that can be passed as args to prettier cli
- *
- * Prettier has an issue with special characters in filenames,
- * such as the ones uses for nextjs dynamic routes (ie: [id].tsx...)
- *
- * @link https://github.com/okonet/lint-staged/issues/676
- *
- * @param {string[]} filenames
- * @returns {string} Return concatenated and escaped filenames
- */
-const concatFilesForPrettier = (filenames) =>
-  filenames
-    .map((filename) => `"${isWin ? filename : quote([filename])}"`)
-    .join(' ');
-
-const concatFilesForStylelint = concatFilesForPrettier;
-
-module.exports = {
-  concatFilesForPrettier,
-  concatFilesForStylelint,
-  getEslintFixCmd,
 };

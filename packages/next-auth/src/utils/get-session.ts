@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers.js';
-import { type Session, type User, type Lucia } from '../lucia/index.js';
+import { type Lucia, type Session, type User } from '../lucia/index.js';
 
 export type IGetSessionReturn = {
   session: Session | null;

@@ -1,20 +1,20 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useCallback, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { env } from 'next-runtime-env';
-import { useState, useCallback } from 'react';
-import { useForm } from 'react-hook-form';
 import { trpc } from '@/common/client-trpc';
 import {
-  loginSchema,
-  type ISignUp,
   type ILogin,
+  type ISignUp,
+  loginSchema,
 } from '@/common/validation/auth';
 import { LayoutPage } from '@/components/LayoutPage/LayoutPage';
 import { GithubLoginButton } from '@/components/LoginButton/GithubLoginButton';
 import { NavigationLink } from '@/components/Navigation/NavigationLink';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export default function Login() {
   const t = useTranslations('Login');

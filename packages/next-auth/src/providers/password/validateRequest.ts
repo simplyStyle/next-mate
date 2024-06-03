@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers.js';
-import type { Lucia, User, Session } from '../../lucia/index.js';
+import type { Lucia, Session, User } from '../../lucia/index.js';
 
 export const validateRequest = async (
   lucia: Lucia

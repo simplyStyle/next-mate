@@ -1,7 +1,7 @@
-import { getNextConfig, getNextConfigEnv } from '@hyperse-io/next-env';
-import bundleAnalyzer from '@next/bundle-analyzer';
 import withNextIntl from 'next-intl/plugin';
 import { z } from 'zod';
+import { getNextConfig, getNextConfigEnv } from '@hyperse/next-env';
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 /**
  * The order of plugins
@@ -43,8 +43,8 @@ const config = {
     // typedRoutes: true,
     // Turbo seemingly supports HMR for JSON files, quite handy to handle i18n messages.
     serverActions: {
-      allowedForwardedHosts: ['www.hyperse.net', 'localhost'],
-      allowedOrigins: ['www.hyperse.net', 'localhost'],
+      allowedForwardedHosts: ['www.domain.com', 'localhost'],
+      allowedOrigins: ['www.domain.com', 'localhost'],
     },
     serverComponentsExternalPackages: [
       '@node-rs/argon2',
@@ -54,9 +54,9 @@ const config = {
   /** We run eslint as a separate task in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   // transpilePackages: [
-  //   '@hyperse-io/next-auth',
-  //   '@hyperse-io/next-core',
-  //   '@hyperse-io/next-env',
+  //   '@hyperse/next-auth',
+  //   '@hyperse/next-core',
+  //   '@hyperse/next-env',
   // ],
 };
 

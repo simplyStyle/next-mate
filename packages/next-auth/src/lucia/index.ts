@@ -1,21 +1,20 @@
-export { Lucia } from './core.js';
-export { Scrypt, generateId, generateIdFromEntropySize } from './crypto.js';
-export { TimeSpan } from 'oslo';
-export { Cookie } from 'oslo/cookie';
-export { verifyRequestOrigin } from 'oslo/request';
-
 export type {
-  User,
   Session,
-  SessionCookieOptions,
   SessionCookieAttributesOptions,
+  SessionCookieOptions,
+  User,
 } from './core.js';
+export { Lucia } from './core.js';
+export type { PasswordHashingAlgorithm } from './crypto.js';
+export { generateId, generateIdFromEntropySize, Scrypt } from './crypto.js';
 export type {
+  Adapter,
   DatabaseAuth,
   DatabaseSession,
   DatabaseUser,
-  Adapter,
 } from './database.js';
-export type { PasswordHashingAlgorithm } from './crypto.js';
-export type { CookieAttributes } from 'oslo/cookie';
 export * from './type.js';
+export { TimeSpan } from 'oslo';
+export type { CookieAttributes } from 'oslo/cookie';
+export { Cookie } from 'oslo/cookie';
+export { verifyRequestOrigin } from 'oslo/request';

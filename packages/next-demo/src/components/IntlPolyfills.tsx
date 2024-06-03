@@ -20,7 +20,6 @@ export function IntlPolyfills() {
   ];
 
   return (
-    // eslint-disable-next-line @next/next/no-before-interactive-script-outside-document
     <Script
       strategy="beforeInteractive"
       src={

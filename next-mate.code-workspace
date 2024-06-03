@@ -30,11 +30,14 @@
     },
   ],
   "extensions": {
-    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+    "recommendations": [
+      "dbaeumer.vscode-eslint"
+    ],
   },
   "settings": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.experimental.useFlatConfig": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
       "source.organizeImports": "never",
@@ -61,5 +64,9 @@
     "[prisma]": {
       "editor.defaultFormatter": "Prisma.prisma",
     },
+    "i18n-ally.localesPaths": [
+      "i18n"
+    ],
+    "i18n-ally.keystyle": "nested",
   },
 }

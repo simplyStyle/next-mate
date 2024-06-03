@@ -1,5 +1,4 @@
 import { generateId, type Lucia } from '../../lucia/index.js';
-import { createSessionAndCookie } from '../../utils/createSessionAndCookie.js';
 
 export async function register(
   lucia: Lucia,

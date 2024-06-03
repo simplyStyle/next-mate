@@ -70,7 +70,6 @@ export function isExtractableFile(value: unknown): value is ExtractableFile {
  * | `file1` | `["prefix.a", "prefix.b.0"]` |
  * | `file2` | `["prefix.b.1"]`             |
  */
-// eslint-disable-next-line sonarjs/cognitive-complexity
 export function extractFiles(
   value: unknown,
   isExtractable: (value: unknown) => boolean,
@@ -120,9 +119,11 @@ export function extractFiles(
   function recurse(value: unknown, path: unknown, recursed: Set<unknown>) {
     if (isExtractable(value)) {
       const filePaths = files.get(value);
-
-      filePaths ? filePaths.push(path) : files.set(value, [path]);
-
+      if (filePaths) {
+        filePaths.push(path);
+      } else {
+        files.set(value, [path]);
+      }
       return null;
     }
 

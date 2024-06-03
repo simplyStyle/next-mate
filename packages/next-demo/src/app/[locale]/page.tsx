@@ -1,12 +1,12 @@
-import { HydrateClient } from '@hyperse-io/next-core';
+import { Suspense, use } from 'react';
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { Suspense, use } from 'react';
 import { CreatePostForm } from '@/app/[locale]/post/components/CreatePostForm';
 import { PostList } from '@/app/[locale]/post/components/PostList';
 import { PostListItem } from '@/app/[locale]/post/components/PostListItem';
 import { ProcessEnv } from '@/components/ProcessEnv/ProcessEnv';
 import { rsc } from '@/server/rsc';
+import { HydrateClient } from '@hyperse/next-core';
 
 function PostListSkeleton() {
   return (

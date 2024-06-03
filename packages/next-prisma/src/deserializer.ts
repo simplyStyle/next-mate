@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   type ConnectorType,
   type DataSource,
-  type EnvValue,
   type DMMF,
+  type EnvValue,
   type GeneratorConfig,
 } from '@prisma/generator-helper';
 import {
@@ -199,7 +198,7 @@ function deserializeDatasource(datasource: DataSource): string {
 }
 
 function deserializeGenerator(generator: GeneratorConfig): string {
-  const { binaryTargets, name, output, provider, previewFeatures } = generator;
+  const { name, output, provider, previewFeatures } = generator;
   return renderBlock('generator', name, [
     renderProvider(provider.value as string),
     renderOutput(output?.value || null),
