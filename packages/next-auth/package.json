@@ -51,25 +51,25 @@
     "oslo": "1.2.0"
   },
   "devDependencies": {
-    "@hyperse/eslint-config-hyperse": "^1.0.5",
-    "@prisma/client": "^5.14.0",
-    "@types/node": "20.12.12",
+    "@hyperse/eslint-config-hyperse": "^1.0.6",
+    "@prisma/client": "^5.15.0",
+    "@types/node": "20.14.1",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",
-    "eslint": "^9.3.0",
+    "eslint": "^9.4.0",
     "next": "^14.2.3",
     "npm-run-all": "4.1.5",
-    "prisma": "^5.14.0",
+    "prisma": "^5.15.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rimraf": "5.0.7",
     "typescript": "5.4.5",
-    "vite": "5.2.11",
+    "vite": "5.2.12",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.6.0"
   },
   "peerDependencies": {
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.15.0",
     "next": "^14.2.3"
   },
   "peerDependenciesMeta": {
