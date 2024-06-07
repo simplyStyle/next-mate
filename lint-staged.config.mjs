@@ -18,7 +18,7 @@ const rules = {
       cache: true,
       // when autofixing staged-files a good tip is to disable react-hooks/exhaustive-deps, cause
       // a change here can potentially break things without proper visibility.
-      rules: ['react-hooks/exhaustive-deps: off'],
+      rules: [],
       maxWarnings: 25,
       files: filenames,
     });
