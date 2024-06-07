@@ -17,9 +17,8 @@ export async function authorizeHandler(
   provider: OAuth2Provider,
   cookieAttributes: Partial<ResponseCookie>
 ) {
-  const sessions = await getSession(lucia);
-  const session = sessions?.session;
-  if (session) {
+  const sessionAndUser = await getSession(lucia);
+  if (sessionAndUser?.session) {
     return new Response(null, {
       status: 302,
       headers: {
