@@ -53,14 +53,14 @@
     "superjson": "^2.2.1"
   },
   "devDependencies": {
-    "@hyperse/eslint-config-hyperse": "^1.0.5",
+    "@hyperse/eslint-config-hyperse": "^1.0.7",
     "@tanstack/query-core": "^5.x",
-    "@tanstack/react-query": "^5.37.1",
+    "@tanstack/react-query": "^5.40.1",
     "@trpc/server": "next",
-    "@types/node": "20.12.12",
+    "@types/node": "20.14.2",
     "@vitest/coverage-istanbul": "1.6.0",
     "@vitest/ui": "1.6.0",
-    "eslint": "^9.3.0",
+    "eslint": "^9.4.0",
     "next": "^14.2.3",
     "npm-run-all": "4.1.5",
     "react": "^18.3.1",
@@ -69,13 +69,13 @@
     "rollup": "^4.18.0",
     "rollup-plugin-preserve-directives": "0.4.0",
     "typescript": "5.4.5",
-    "vite": "5.2.11",
+    "vite": "5.2.13",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.6.0"
   },
   "peerDependencies": {
     "@tanstack/query-core": "^5.x",
-    "@tanstack/react-query": "^5.37.1",
+    "@tanstack/react-query": "^5.40.1",
     "@trpc/server": "*",
     "next": "^14.2.3",
     "react": "^18.3.1"
